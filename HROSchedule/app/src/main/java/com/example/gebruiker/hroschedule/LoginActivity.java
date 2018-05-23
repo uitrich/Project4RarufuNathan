@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.fortuna.ical4j.model.*;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -334,7 +335,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
