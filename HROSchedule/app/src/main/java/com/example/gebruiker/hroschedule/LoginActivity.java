@@ -175,11 +175,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
+            mEmailView.setError("je kan dit niet leeg laten");
             focusView = mEmailView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+            mEmailView.setError("email is niet van de HRO");
             focusView = mEmailView;
             cancel = true;
         }
@@ -349,7 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             }
             else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.setError("Email en link komen niet overeen");
                 mPasswordView.requestFocus();
             }
         }
