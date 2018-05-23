@@ -3,6 +3,7 @@ package com.example.gebruiker.hroschedule;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -26,7 +27,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,6 +66,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -313,7 +318,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -334,10 +339,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
-
+            //Dit is de changer voor als je uit je testding wilt very important yes
+            boolean importantworfchanger = false;
             if (success) {
-                setContentView(R.layout.activity_ralfstestspace);
-            } else {
+                if (importantworfchanger) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(LoginActivity.this, Ralfstestspace.class));
+                }
+            }
+            else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
