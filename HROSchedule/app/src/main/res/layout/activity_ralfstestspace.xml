@@ -30,4 +30,21 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <FrameLayout
+        android:id="@+id/fotobox"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/prev_list">
+
+        <ImageView
+            android:id="@+id/imgTest"
+            android:layout_width="431dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_horizontal"
+            android:scaleType="matrix"
+            app:srcCompat="@drawable/wd0" />
+
+
+    </FrameLayout>
+
 </android.support.design.widget.CoordinatorLayout>
