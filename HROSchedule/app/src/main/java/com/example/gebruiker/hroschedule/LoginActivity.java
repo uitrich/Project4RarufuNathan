@@ -341,11 +341,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
             //Dit is de changer voor als je uit je testding wilt very important yes
             boolean importantworfchanger = true;
+            Intent intentMain = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intentRarufu = new Intent(LoginActivity.this, Ralfstestspace.class);
+
+            intentMain.putExtra("Email",mEmail);
+            intentMain.putExtra("Link",mPassword);
+
+            intentRarufu.putExtra("Email", mEmail);
+            intentRarufu.putExtra("Link", mPassword);
+
             if (success) {
                 if (importantworfchanger) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(intentMain);
                 } else {
-                    startActivity(new Intent(LoginActivity.this, Ralfstestspace.class));
+                    startActivity(intentRarufu);
                 }
             }
             else {

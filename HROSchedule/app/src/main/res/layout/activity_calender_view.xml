@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalenderView">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datum"
+        android:text="Datenotgiven"/>
+
+    <CalendarView
+        android:id="@+id/Calendar"
+        android:layout_width="385dp"
+        android:layout_height="207dp"
+        android:clickable="true"
+        android:focusable="true" />
+    <Button
+        android:layout_width="250px"
+        android:layout_height="500px"
+        android:id="@+id/agendaitem1"
+        android:text="Item 1"
+        android:textAlignment="gravity"
+        android:textAllCaps="false"
+        android:gravity="top"
+        android:longClickable="true"
+        android:focusable="true"
+        android:layout_below="@id/Calendar"
+        />
+    <Button
+        android:layout_width="250px"
+        android:layout_height="500px"
+        android:textAllCaps="false"
+        android:id="@+id/agendaitem2"
+        android:text="Item 2"
+        android:textAlignment="gravity"
+        android:gravity="top"
+        android:longClickable="true"
+        android:focusable="true"
+        android:layout_below="@id/Calendar"
+        android:layout_toRightOf="@id/agendaitem1"
+        />
+    <Button
+        android:layout_width="250px"
+        android:layout_height="500px"
+        android:id="@+id/agendaitem3"
+        android:text="Item 3"
+        android:textAlignment="gravity"
+        android:textAllCaps="false"
+        android:gravity="top"
+        android:longClickable="true"
+        android:focusable="true"
+        android:layout_below="@id/Calendar"
+        android:layout_toRightOf="@id/agendaitem2"
+        />
+</RelativeLayout>
