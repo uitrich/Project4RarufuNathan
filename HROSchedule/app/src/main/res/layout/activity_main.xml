@@ -1,25 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:layout_height="match_parent" >
 
-    <include
-        layout="@layout/app_bar_main"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        android:background="@drawable/login_background" >
+
+        <ImageView
+            android:id="@+id/Map"
+            android:layout_width="wrap_content"
+            android:layout_height="103dp"
+            android:contentDescription="@android:string/unknownName"
+            android:foregroundGravity="top"
+            android:src="@drawable/map" />
+
+
+        <!-- These are the H, WD and WN buttons -->
+
+
+       <ImageButton
+           android:id="@+id/H"
+           android:layout_marginLeft="10px"
+           android:layout_width="60px"
+           android:layout_height="34px"
+           android:layout_below="@+id/Map"
+           android:src="@drawable/selecth" />
+       <ImageButton
+           android:id="@+id/WN"
+           android:layout_width="60px"
+           android:layout_height="34px"
+           android:layout_below="@+id/Map"
+           android:layout_toRightOf="@id/H"
+           android:src="@drawable/wn" />
+       <ImageButton
+           android:id="@+id/WD"
+           android:layout_width="60px"
+           android:layout_height="34px"
+           android:layout_below="@+id/Map"
+           android:layout_toRightOf="@id/WN"
+           android:src="@drawable/wd" />
+
+
+        <!-- These are the building level buttons -->
+
+
+        <ImageButton
+            android:id="@+id/ln1"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/H"
+            android:src="@drawable/tabn1" />
+        <ImageButton
+            android:id="@+id/l0"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/H"
+            android:layout_marginLeft="10px"
+            android:layout_toRightOf="@id/ln1"
+            android:src="@drawable/selecttab6" />
+        <ImageButton
+            android:id="@+id/l1"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/WD"
+            android:layout_marginLeft="10px"
+            android:layout_toRightOf="@id/l0"
+            android:src="@drawable/tab1" />
+        <ImageButton
+            android:id="@+id/l2"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10px"
+            android:layout_below="@+id/H"
+            android:layout_toRightOf="@id/l1"
+            android:src="@drawable/tab2" />
+        <ImageButton
+            android:id="@+id/l3"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/H"
+            android:layout_marginLeft="10px"
+            android:layout_toRightOf="@id/l2"
+            android:src="@drawable/tab3" />
+        <ImageButton
+            android:id="@+id/l4"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/WD"
+            android:layout_marginLeft="10px"
+            android:layout_toRightOf="@id/l3"
+            android:src="@drawable/tab4" />
+        <ImageButton
+            android:id="@+id/l5"
+            android:layout_width="60px"
+            android:layout_height="100px"
+            android:layout_below="@+id/WD"
+            android:layout_marginLeft="10px"
+            android:layout_toRightOf="@id/l4"
+            android:src="@drawable/tab5" />
+        <!-- This is the map section -->
+        <ImageView
+            android:id="@+id/Chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/l3"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/h0" />
+
+        <ImageView
+            android:id="@+id/agendaLayout"
+            android:layout_width="match_parent"
+            android:layout_height="154dp"
+            android:layout_below="@id/Chart"
+            android:layout_marginTop="-16dp"
+            android:src="@drawable/altbox" />
+
+
+        <!-- Agenda Items -->
+        <TextView
+            android:id="@+id/AgendaItem1"
+            android:layout_width="240px"
+            android:layout_height="260px"
+            android:text="Item 1"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/Chart"
+            />
+        <TextView
+            android:id="@+id/AgendaItem2"
+            android:layout_width="240px"
+            android:layout_height="260px"
+            android:text="Item 2"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/Chart"
+            android:layout_toRightOf="@id/AgendaItem1"
+            />
+        <TextView
+
+            android:id="@+id/AgendaItem3"
+            android:layout_width="230px"
+            android:layout_height="260px"
+            android:text="Item 3"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/Chart"
+            android:layout_toRightOf="@id/AgendaItem2"
+            />
+        <!-- Buttons voor de optie om een afspraak toe te voegen -->
+
+        <Button
+            android:id="@+id/ToevoegenItem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afspraak Toevoegen"
+            android:textAllCaps="false"
+            android:textSize="10dp"
+            android:layout_below="@id/AgendaItem1"
+            android:layout_marginTop="-40dp"
+            />
+        <Button
+            android:id="@+id/ToevoegenItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afspraak Toevoegen"
+            android:textAllCaps="false"
+            android:textSize="10dp"
+            android:layout_toRightOf="@id/ToevoegenItem1"
+            android:layout_below="@id/AgendaItem1"
+            android:layout_marginTop="-40dp"
+            android:layout_marginLeft="15dp"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afspraak Toevoegen"
+            android:textAllCaps="false"
+            android:textSize="10dp"
+            android:layout_below="@id/AgendaItem1"
+            android:layout_toRightOf="@id/ToevoegenItem2"
+            android:layout_marginTop="-40dp"
+            android:layout_marginLeft="12dp"
+            />
+    </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

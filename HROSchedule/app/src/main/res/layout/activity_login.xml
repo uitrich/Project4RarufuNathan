@@ -21,12 +21,6 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="280dp"
-        android:layout_height="167dp"
-        app:srcCompat="@drawable/icon" />
-
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"

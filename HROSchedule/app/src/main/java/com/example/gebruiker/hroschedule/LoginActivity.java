@@ -318,7 +318,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(1);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -340,7 +340,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
             //Dit is de changer voor als je uit je testding wilt very important yes
-            boolean importantworfchanger = false;
+            boolean importantworfchanger = true;
             if (success) {
                 if (importantworfchanger) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
