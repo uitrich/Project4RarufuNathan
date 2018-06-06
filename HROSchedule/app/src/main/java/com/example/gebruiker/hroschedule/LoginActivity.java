@@ -23,14 +23,17 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.view.animation.AnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +44,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity  {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -59,306 +62,146 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
-
-
+    private EditText lokaalnummer;
+    private TextView textView;
+    private Button button;
+    private String Lokaalcode;
+    private String gebouw;
+    private Integer etage;
+    private String lokaal;
+    private Boolean unlockplattegrond = false;
+    private String lokaalsum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        lokaalnummer = findViewById(R.id.Lokaalnummer);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.tester);
+        final ImageView imageView = findViewById(R.id.imageView);
+
+
+
+        button.setOnClickListener(new OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
+            public void onClick(View v) {
+                textView.setText(lokaalnummer.getText().toString());
+                Lokaalcode = lokaalnummer.getText().toString();
+                if (Lokaalcode.contains("H")) {
+                    gebouw = "H";
+                    etage = getEtage(Lokaalcode);
+                    lokaalsum = gebouw + etage;
+                    lokaal = getLokaal(Lokaalcode, lokaalsum);
+                    unlockplattegrond = true;
                 }
-                return false;
+
+                else if (Lokaalcode.contains("WD")) {
+                    gebouw = "WD";
+                    etage = getEtage(Lokaalcode);
+                    lokaalsum = gebouw + etage;
+                    lokaal = getLokaal(Lokaalcode, lokaalsum);
+                    unlockplattegrond = true;
+                }
+                else if (Lokaalcode.contains("WN")) {
+                    gebouw = "WN";
+                    etage = getEtage(Lokaalcode);
+                    lokaalsum = gebouw + etage;
+                    lokaal = getLokaal(Lokaalcode, lokaalsum);
+                    unlockplattegrond = true;
+                }
+                else {
+                    unlockplattegrond = false;
+                }
+                String imagefile = gebouw + etage;
+                //H Gebouw
+                if (unlockplattegrond) {
+                    imageView.setVisibility(View.VISIBLE);
+                    if (imagefile.equals("H0")) {
+                        imageView.setImageResource(R.drawable.h0);
+                    }
+                    else if (imagefile.equals("H1")) {
+                        imageView.setImageResource(R.drawable.h1);
+                    }
+                    else if (imagefile.equals("H2")) {
+                        imageView.setImageResource(R.drawable.h2);
+                    }
+                    //WD gebouw
+                    else if (imagefile.equals("WD0")) {
+                        imageView.setImageResource(R.drawable.wd0);
+                    }
+                    else if (imagefile.equals("WD1")) {
+                        imageView.setImageResource(R.drawable.wd1);
+                    }
+                    else if (imagefile.equals("WD2")) {
+                        imageView.setImageResource(R.drawable.wd2);
+                    }
+                    else if (imagefile.equals("WD3")) {
+                        imageView.setImageResource(R.drawable.wd3);
+                    }
+                    else if (imagefile.equals("WD4")) {
+                        imageView.setImageResource(R.drawable.wd4);
+                    }
+                    else if (imagefile.equals("WD5")) {
+                        imageView.setImageResource(R.drawable.wd5);
+                    }
+                    //WD Gebouw
+                    else if (imagefile.equals("WN0")) {
+                        imageView.setImageResource(R.drawable.wn0);
+                    }
+                    else if (imagefile.equals("WN1")) {
+                        imageView.setImageResource(R.drawable.wn1);
+                    }
+                    else if (imagefile.equals("WN2")) {
+                        imageView.setImageResource(R.drawable.wn2);
+                    }
+                    else if (imagefile.equals("WN3")) {
+                        imageView.setImageResource(R.drawable.wn3);
+                    }
+                    else if (imagefile.equals("WN4")) {
+                        imageView.setImageResource(R.drawable.wn4);
+                    }
+                    else if (imagefile.equals("WN5")) {
+                        imageView.setImageResource(R.drawable.wn5);
+                    }
+                }
+
+
             }
         });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
+    public Integer getEtage(String lokaalnr) {
+        if (lokaalnr.contains(".0.")) {
+            return 0;
         }
-
-        getLoaderManager().initLoader(0, null, this);
+        else if (lokaalnr.contains(".1.")) {
+            return 1;
+        }
+        else if (lokaalnr.contains(".2.")) {
+            return 2;
+        }
+        else if (lokaalnr.contains(".3.")) {
+            return 3;
+        }
+        else if (lokaalnr.contains(".4.")) {
+            return 4;
+        }
+        else if (lokaalnr.contains(".5.")) {
+            return 5;
+        }
+        else {
+            return 69;
+        }
     }
+    public String getLokaal(String lokaalnr, String lokaalsum) {
 
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
+        return lokaalnr.replace(lokaalsum, "");
         }
     }
 
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password, email)) {
-            mPasswordView.setError("Link en email komen niet overeen");
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError("je kan dit niet leeg laten");
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError("email is niet van de HRO");
-            focusView = mEmailView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-        }
-    }
-
-    private boolean isEmailValid(String email) {
-        boolean checker = email.contains("@hr.nl");
-        return checker;
-    }
-
-    private boolean isPasswordValid(String password, String Email) {
-        boolean checker = password.contains("https://hint.hr.nl/xsp/rooster/")  && password.contains(Email.replace("@hr.nl", ""));
-        return checker;
-
-    }
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Nickname
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
-
-
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
-
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String username, String password) {
-            mEmail = username;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-            //Dit is de changer voor als je uit je testding wilt very important yes
-            boolean importantworfchanger = true;
-            if (success) {
-                if (importantworfchanger) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                } else {
-                    startActivity(new Intent(LoginActivity.this, Ralfstestspace.class));
-                }
-            }
-            else {
-                mPasswordView.setError("Email en link komen niet overeen");
-                mPasswordView.requestFocus();
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
-    }
-}
 

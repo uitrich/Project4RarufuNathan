@@ -33,7 +33,6 @@ public class Ralfstestspace extends AppCompatActivity {
     private void bindViews(View rootView){
         mPhotobox = (FrameLayout) rootView.findViewById(R.id.fotobox);
         mImgTest = (ImageView) rootView.findViewById(R.id.imgTest);
-        mImgTest.setOnTouchListener(this);
     }
 
     private float spacing(MotionEvent event){
