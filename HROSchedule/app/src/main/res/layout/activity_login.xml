@@ -34,10 +34,15 @@
             android:id="@+id/tester"
             android:layout_below="@id/button"
             />
-        <com.github.chrisbanes.photoview.PhotoView
-            android:id="@+id/photo_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+       <ImageView
+           android:layout_width="350dp"
+           android:layout_height="360dp"
+           android:layout_below="@id/tester"
+           android:scaleType="matrix"
+           android:src="@drawable/h0"
+           android:visibility="invisible"
+           android:id="@+id/imageView"
+           />
 
     </RelativeLayout>
 </LinearLayout>
