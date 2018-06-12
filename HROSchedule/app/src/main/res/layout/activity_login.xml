@@ -34,15 +34,39 @@
             android:id="@+id/tester"
             android:layout_below="@id/button"
             />
-       <ImageView
-           android:layout_width="350dp"
-           android:layout_height="360dp"
-           android:layout_below="@id/tester"
-           android:scaleType="matrix"
-           android:src="@drawable/h0"
-           android:visibility="invisible"
-           android:id="@+id/imageView"
-           />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="350dp"
+            android:layout_height="220dp"
+            android:layout_below="@id/tester"
+            android:scaleType="matrix"
+            android:src="@drawable/h0"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/item1"
+            android:layout_width="114dp"
+            android:layout_height="145dp"
+            android:layout_below="@id/imageView"
+            android:text="Button"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/item2"
+            android:layout_width="114dp"
+            android:layout_height="145dp"
+            android:layout_below="@id/imageView"
+            android:layout_toRightOf="@id/item1"
+            android:text="Button"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/item3"
+            android:layout_width="114dp"
+            android:layout_height="145dp"
+            android:layout_below="@id/imageView"
+            android:layout_toRightOf="@id/item2"
+            android:text="Button"
+            android:textAllCaps="false" />
 
     </RelativeLayout>
 </LinearLayout>
