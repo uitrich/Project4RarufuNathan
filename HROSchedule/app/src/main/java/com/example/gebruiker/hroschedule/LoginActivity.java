@@ -93,8 +93,8 @@ public class LoginActivity extends AppCompatActivity {
     //ext
     private String ExtVaknaam;
     private String ExtLokaal;
-    private Boolean ExtItemMade;
-    private Boolean Agendaitemselected = true;
+    private Boolean ExtItemMade = false;
+    private Boolean Agendaitemselected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("itemid", "1");
                 startActivity(intent);
                 ExtItemMade = true;
+
             }
         });
         item2.setOnClickListener(new OnClickListener() {
@@ -253,7 +254,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     //agenda functie
     public void checkAgendaItem() {
-        if (Agendaitemselected){
+        if (ExtItemMade){
             Bundle bundle = getIntent().getExtras();
             Lokaalcode = bundle.getString("Lokaal");
             textView.setText(Lokaalcode);
@@ -270,6 +271,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 }
 

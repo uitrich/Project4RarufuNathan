@@ -21,7 +21,7 @@ public class Agenda extends AppCompatActivity {
     private Boolean unlockplattegrond = false;
     private String lokaalsum;
 
-    private Bundle bundle = getIntent().getExtras();
+
 
 
     @Override
@@ -44,43 +44,54 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View view) {
                 String vaknaam = Vaknaam.getText().toString();
                 String lokaal = Lokaal.getText().toString();
-                if (lokaal.contains("H")) {
-                    gebouw = "H";
-                    etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
-                    lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    if (!Lokaal.getText().toString().isEmpty()) {
-                        intent.putExtra("Vaknaam", vaknaam);
-                        intent.putExtra("Lokaal", lokaal);
-                        startActivity(intent);
+                Bundle bundle = getIntent().getExtras();
+                if (!lokaal.isEmpty() && !vaknaam.isEmpty() && !bundle.isEmpty()) {
+                    if (lokaal.contains("H")) {
+
+                        gebouw = "H";
+                        etage = getEtage(Lokaalcode);
+                        lokaalsum = gebouw + etage;
+                        lokaal = getLokaal(Lokaalcode, lokaalsum);
+                        if (!Lokaal.getText().toString().isEmpty()) {
+                            intent.putExtra("Vaknaam", vaknaam);
+                            intent.putExtra("Lokaal", lokaal);
+                            intent.putExtra("itemid", bundle.getString("itemid"));
+                            startActivity(intent);
+                        }
+                    } else if (Lokaalcode.contains("WD")) {
+                        gebouw = "WD";
+                        etage = getEtage(Lokaalcode);
+                        lokaalsum = gebouw + etage;
+                        lokaal = getLokaal(Lokaalcode, lokaalsum);
+                        if (!Lokaal.getText().toString().isEmpty()) {
+                            intent.putExtra("Vaknaam", vaknaam);
+                            intent.putExtra("Lokaal", lokaal);
+                            intent.putExtra("itemid", bundle.getString("itemid"));
+                            startActivity(intent);
+                        }
+                    } else if (Lokaalcode.contains("WN")) {
+                        gebouw = "WN";
+                        etage = getEtage(Lokaalcode);
+                        lokaalsum = gebouw + etage;
+                        lokaal = getLokaal(Lokaalcode, lokaalsum);
+                        if (!Lokaal.getText().toString().isEmpty()) {
+                            intent.putExtra("Vaknaam", vaknaam);
+                            intent.putExtra("Lokaal", lokaal);
+                            intent.putExtra("itemid", bundle.getString("itemid"));
+                            startActivity(intent);
+                        }
+                    } else {
+                        unlockplattegrond = false;
+                        Lokaal.setError("de letter(s) aan het begin van "+ Lokaalcode +" zijn incorrect");
+                        Lokaal.setText("");
                     }
-                } else if (Lokaalcode.contains("WD")) {
-                    gebouw = "WD";
-                    etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
-                    lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    if (!Lokaal.getText().toString().isEmpty()) {
-                        intent.putExtra("Vaknaam", vaknaam);
-                        intent.putExtra("Lokaal", lokaal);
-                        startActivity(intent);
-                    }
-                } else if (Lokaalcode.contains("WN")) {
-                    gebouw = "WN";
-                    etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
-                    lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    if (!Lokaal.getText().toString().isEmpty()) {
-                        intent.putExtra("Vaknaam", vaknaam);
-                        intent.putExtra("Lokaal", lokaal);
-                        intent.putExtra("itemid", bundle.getString("itemid"));
-                        startActivity(intent);
-                    }
-                } else {
-                    unlockplattegrond = false;
-                    Lokaal.setError("de letter(s) aan het begin van "+ Lokaalcode +" zijn incorrect");
-                    Lokaal.setText("");
                 }
-    }
+                else {
+                    Vaknaam.setError("Deze moet ingevuld zijn");
+                    Lokaal.setError("Deze moet ingevuld zijn");
+                }
+                }
+
 
     public Integer getEtage (String lokaalnr){
         if (lokaalnr.contains(".0.")) {
