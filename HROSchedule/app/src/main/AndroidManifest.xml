@@ -33,10 +33,6 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Agenda"
-            android:label="@string/title_activity_agenda"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

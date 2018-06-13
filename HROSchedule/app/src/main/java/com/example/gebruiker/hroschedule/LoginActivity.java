@@ -3,6 +3,7 @@ package com.example.gebruiker.hroschedule;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.opengl.Matrix;
@@ -21,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -39,11 +41,18 @@ import android.view.animation.AnimationUtils;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import net.fortuna.ical4j.model.*;
 
-import static android.Manifest.permission.READ_CONTACTS;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -84,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
     private PhotoViewAttacher PVA;
 
 
+
     //agenda
 
     private Button item1;
@@ -108,40 +118,8 @@ public class LoginActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
 
-        item1 = findViewById(R.id.item1);
-        item2 = findViewById(R.id.item2);
-        item3 = findViewById(R.id.item3);
 
         ExtItemMade = false;
-
-        item1.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Agenda.class);
-                intent.putExtra("itemid", "1");
-                startActivity(intent);
-                ExtItemMade = true;
-
-            }
-        });
-        item2.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Agenda.class);
-                intent.putExtra("itemid", "2");
-                startActivity(intent);
-                ExtItemMade = true;
-            }
-        });
-        item3.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Agenda.class);
-                intent.putExtra("itemid", "3");
-                startActivity(intent);
-                ExtItemMade = true;
-            }
-        });
 
         button.setOnClickListener(new OnClickListener() {
             @Override
@@ -151,31 +129,26 @@ public class LoginActivity extends AppCompatActivity {
                 if (Lokaalcode.contains("H")) {
                     gebouw = "H";
                     etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
+                    lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    checkAgendaItem();
                     unlockplattegrond = true;
                 } else if (Lokaalcode.contains("WD")) {
                     gebouw = "WD";
                     etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
+                    lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    checkAgendaItem();
                     unlockplattegrond = true;
                 } else if (Lokaalcode.contains("WN")) {
                     gebouw = "WN";
                     etage = getEtage(Lokaalcode);
-                    lokaalsum = gebouw + etage;
+                    lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
-                    checkAgendaItem();
                     unlockplattegrond = true;
                 } else {
                     unlockplattegrond = false;
                     lokaalnummer.setError("de letter(s) aan het begin van "+ Lokaalcode +" zijn incorrect");
                     lokaalnummer.setText("");
                 }
-
-
 
                 String imagefile = gebouw + etage;
                 //H Gebouw
@@ -252,27 +225,7 @@ public class LoginActivity extends AppCompatActivity {
         return lokaalnr.replace(lokaalsum, "");
 
     }
-    //agenda functie
-    public void checkAgendaItem() {
-        if (ExtItemMade){
-            Bundle bundle = getIntent().getExtras();
-            Lokaalcode = bundle.getString("Lokaal");
-            textView.setText(Lokaalcode);
-            if (!bundle.getString("Lokaal").isEmpty() && !bundle.getString("Vaknaam").isEmpty()) {
-                lokaal = bundle.getString("Lokaal");
-                if (bundle.getString("itemid").equals("1")) {
-                    item1.setText(bundle.getString("Vaknaam"));
-                }
-                else if (bundle.getString("itemid").equals("2")) {
-                    item2.setText(bundle.getString("Vaknaam"));
-                }
-                else if (bundle.getString("itemid").equals("3")) {
-                    item3.setText(bundle.getString("Vaknaam"));
-                }
-            }
-        }
 
-    }
 }
 
 
