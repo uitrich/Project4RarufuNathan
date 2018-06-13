@@ -155,39 +155,514 @@ public class LoginActivity extends AppCompatActivity {
                 if (unlockplattegrond) {
                     imageView.setVisibility(View.VISIBLE);
                     if (imagefile.equals("H0")) {
-                        imageView.setImageResource(R.drawable.h0);
+                        if (lokaal.equals("H.0.205")){
+                            imageView.setImageResource(R.drawable.h0205);
+                        }
+                        else if(lokaal.equals("H.0.304")){
+                            imageView.setImageResource(R.drawable.h0304);
+                        }
+                        else if(lokaal.equals("H.0.305")){
+                            imageView.setImageResource(R.drawable.h0305);
+                        }
+                        else if(lokaal.equals("H.0.309")){
+                            imageView.setImageResource(R.drawable.h0309);
+                        }
+                        else if(lokaal.equals("H.0.310")){
+                            imageView.setImageResource(R.drawable.h0310);
+                        }
+                        else if(lokaal.equals("H.0.319")){
+                            imageView.setImageResource(R.drawable.h0319);
+                        }
+                        else if(lokaal.equals("H.0.321")){
+                            imageView.setImageResource(R.drawable.h0321);
+                        }
+                        else if(lokaal.equals("H.0.405")){
+                                imageView.setImageResource(R.drawable.h0405);
+                        }
+                        else {
+                            button.setError("Dit lokaal bestaat niet");
+                        }
                     } else if (imagefile.equals("H1")) {
-                        imageView.setImageResource(R.drawable.h1);
+                        if(lokaal.equals("H.1.110")){
+                            imageView.setImageResource(R.drawable.h1110);
+                        }
+                        else if(lokaal.equals("H.1.112")){
+                            imageView.setImageResource(R.drawable.h1112);
+                        }
+                        else if(lokaal.equals("H.1.114")){
+                            imageView.setImageResource(R.drawable.h1114);
+                        }
+                        else if(lokaal.equals("H.1.204")){
+                            imageView.setImageResource(R.drawable.h1204);
+                        }
+                        else if(lokaal.equals("H.1.206")){
+                            imageView.setImageResource(R.drawable.h1206);
+                        }
+                        else if(lokaal.equals("H.1.306")){
+                            imageView.setImageResource(R.drawable.h1306);
+                        }
+                        else if(lokaal.equals("H.1.308")){
+                            imageView.setImageResource(R.drawable.h1308);
+                        }
+                        else if(lokaal.equals("H.1.312")){
+                            imageView.setImageResource(R.drawable.h1312);
+                        }
+                        else if(lokaal.equals("H.1.315")){
+                            imageView.setImageResource(R.drawable.h1315);
+                        }
+                        else if(lokaal.equals("H.1.316")){
+                            imageView.setImageResource(R.drawable.h1316);
+                        }
+                        else if(lokaal.equals("H.1.403")){
+                            imageView.setImageResource(R.drawable.h1403);
+                        }
+                        else {
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("H2")) {
-                        imageView.setImageResource(R.drawable.h2);
+                        if(lokaal.equals("H.2.111")){
+                            imageView.setImageResource(R.drawable.h2111);
+                        }
+                        else if(lokaal.equals("H.2.112")){
+                            imageView.setImageResource(R.drawable.h2112);
+                        }
+                        else if(lokaal.equals("H.2.114")){
+                            imageView.setImageResource(R.drawable.h2114);
+                        }
+                        else if(lokaal.equals("H.2.204")){
+                            imageView.setImageResource(R.drawable.h2204);
+                        }
+                        else if(lokaal.equals("H.2.306")){
+                            imageView.setImageResource(R.drawable.h2306);
+                        }
+                        else if(lokaal.equals("H.2.307")){
+                            imageView.setImageResource(R.drawable.h2307);
+                        }
+                        else if(lokaal.equals("H.2.308")){
+                            imageView.setImageResource(R.drawable.h2308);
+                        }
+                        else if(lokaal.equals("H.2.312")){
+                            imageView.setImageResource(R.drawable.h2312);
+                        }
+                        else if(lokaal.equals("H.2.318")){
+                            imageView.setImageResource(R.drawable.h2318);
+                        }
+                        else if(lokaal.equals("H.2.403")){
+                            imageView.setImageResource(R.drawable.h2403);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
+                    } else if (imagefile.equals("H3")){
+                        if(lokaal.equals("H.3.109")){
+                            imageView.setImageResource(R.drawable.h3109);
+                        }
+                        else if(lokaal.equals("H.3.111")){
+                            imageView.setImageResource(R.drawable.h3111);
+                        }
+                        else if(lokaal.equals("H.3.204")){
+                            imageView.setImageResource(R.drawable.h3204);
+                        }
+                        else if(lokaal.equals("H.3.206")){
+                            imageView.setImageResource(R.drawable.h3206);
+                        }
+                        else if(lokaal.equals("H.3.306")){
+                            imageView.setImageResource(R.drawable.h3306);
+                        }
+                        else if(lokaal.equals("H.3.307")){
+                            imageView.setImageResource(R.drawable.h3307);
+                        }
+                        else if(lokaal.equals("H.3.308")){
+                            imageView.setImageResource(R.drawable.h3308);
+                        }
+                        else if(lokaal.equals("H.3.312")){
+                            imageView.setImageResource(R.drawable.h3312);
+                        }
+                        else if(lokaal.equals("H.3.318")){
+                            imageView.setImageResource(R.drawable.h3318);
+                        }
+                        else if(lokaal.equals("H.3.319")){
+                            imageView.setImageResource(R.drawable.h3319);
+                        }
+                        else if(lokaal.equals("H.3.403")){
+                            imageView.setImageResource(R.drawable.h3403);
+                        }
+                        else if(lokaal.equals("H.3.405")){
+                            imageView.setImageResource(R.drawable.h3405);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+                    } else if(imagefile.equals("H4")){
+                        if (lokaal.equals("H.4.109")){
+                            imageView.setImageResource(R.drawable.h4109);
+                        }
+                        else if (lokaal.equals("H.4.111")){
+                            imageView.setImageResource(R.drawable.h4111);
+                        }
+                        else if (lokaal.equals("H.4.115")){
+                            imageView.setImageResource(R.drawable.h4115);
+                        }
+                        else if (lokaal.equals("H.4.204")){
+                            imageView.setImageResource(R.drawable.h4204);
+                        }
+                        else if (lokaal.equals("H.4.306")){
+                            imageView.setImageResource(R.drawable.h4306);
+                        }
+                        else if (lokaal.equals("H.4.308")){
+                            imageView.setImageResource(R.drawable.h4308);
+                        }
+                        else if (lokaal.equals("H.4.312")){
+                            imageView.setImageResource(R.drawable.h4312);
+                        }
+                        else if (lokaal.equals("H.4.318")){
+                            imageView.setImageResource(R.drawable.h4318);
+                        }
+                        else if (lokaal.equals("H.4.403")){
+                            imageView.setImageResource(R.drawable.h4403);
+                        }
+                        else if (lokaal.equals("H.4.405")){
+                            imageView.setImageResource(R.drawable.h4405);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
+                    } else if(imagefile.equals("H5")){
+                        if (lokaal.equals("H.5.109")){
+                            imageView.setImageResource(R.drawable.h4109);
+                        }
+                        else if (lokaal.equals("H.5.113")){
+                            imageView.setImageResource(R.drawable.h5113);
+                        }
+                        else if (lokaal.equals("H.5.204")){
+                            imageView.setImageResource(R.drawable.h5204);
+                        }
+                        else if (lokaal.equals("H.5.205")){
+                            imageView.setImageResource(R.drawable.h5205);
+                        }
+                        else if (lokaal.equals("H.5.208")){
+                            imageView.setImageResource(R.drawable.h5208);
+                        }
+                        else if (lokaal.equals("H.5.314")){
+                            imageView.setImageResource(R.drawable.h5314);
+                        }
+                        else if (lokaal.equals("H.5.401")){
+                            imageView.setImageResource(R.drawable.h5401);
+                        }
+                        else if (lokaal.equals("H.5.404")){
+                            imageView.setImageResource(R.drawable.h5404);
+                        }
+                        else if (lokaal.equals("H.5.405")){
+                            imageView.setImageResource(R.drawable.h5405);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
+
                     }
                     //WD gebouw
                     else if (imagefile.equals("WD0")) {
-                        imageView.setImageResource(R.drawable.wd0);
+                        if(lokaal.equals("WD.00.001")){
+                            imageView.setImageResource(R.drawable.wd0001);
+                        }
+                        else if(lokaal.equals("WD.00.004")){
+                            imageView.setImageResource(R.drawable.wd0004);
+                        }
+                        else if(lokaal.equals("WD.00.013")){
+                            imageView.setImageResource(R.drawable.wd0013);
+                        }
+                        else if(lokaal.equals("WD.00.018")){
+                            imageView.setImageResource(R.drawable.wd0018);
+                        }
+                        else if(lokaal.equals("WD.00.026")){
+                            imageView.setImageResource(R.drawable.wd0026);
+                        }
+                        else if(lokaal.equals("WD.00.034")){
+                            imageView.setImageResource(R.drawable.wd0034);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
                     } else if (imagefile.equals("WD1")) {
-                        imageView.setImageResource(R.drawable.wd1);
+                        if(lokaal.equals("WD.01.003")){
+                            imageView.setImageResource(R.drawable.wd0103);
+                        }
+                        else if(lokaal.equals("WD.01.003")){
+                            imageView.setImageResource(R.drawable.wd0103);
+                        }
+                        else if(lokaal.equals("WD.01.016")){
+                            imageView.setImageResource(R.drawable.wd0116);
+                        }
+                        else if(lokaal.equals("WD.01.019")){
+                            imageView.setImageResource(R.drawable.wd0119);
+                        }
+                        else if(lokaal.equals("WD.01.021")){
+                            imageView.setImageResource(R.drawable.wd0121);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
                     } else if (imagefile.equals("WD2")) {
-                        imageView.setImageResource(R.drawable.wd2);
+                        if(lokaal.equals("WD.02.002")){
+                            imageView.setImageResource(R.drawable.wd0202);
+                        }
+                        else if(lokaal.equals("WD.02.016")){
+                            imageView.setImageResource(R.drawable.wd0216);
+                        }
+                        else if(lokaal.equals("WD.02.019")){
+                            imageView.setImageResource(R.drawable.wd0219);
+                        }
+                        else if(lokaal.equals("WD.02.021")){
+                            imageView.setImageResource(R.drawable.wd0221);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
+
                     } else if (imagefile.equals("WD3")) {
-                        imageView.setImageResource(R.drawable.wd3);
+                        if(lokaal.equals("WD.03.001")){
+                            imageView.setImageResource(R.drawable.wd0301);
+                        }
+                        else if(lokaal.equals("WD.03.005")){
+                            imageView.setImageResource(R.drawable.wd0305);
+                        }
+                        else if(lokaal.equals("WD.03.013")){
+                            imageView.setImageResource(R.drawable.wd0313);
+                        }
+                        else if(lokaal.equals("WD.03.019")){
+                            imageView.setImageResource(R.drawable.wd0319);
+                        }
+                        else if(lokaal.equals("WD.03.021")){
+                            imageView.setImageResource(R.drawable.wd0321);
+                        }
+                        else if(lokaal.equals("WD.03.023")){
+                            imageView.setImageResource(R.drawable.wd0323);
+                        }
+                        else if(lokaal.equals("WD.03.028")){
+                            imageView.setImageResource(R.drawable.wd0328);
+                        }
+                        else if(lokaal.equals("WD.03.033")){
+                            imageView.setImageResource(R.drawable.wd0333);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat");
+                        }
+
+
                     } else if (imagefile.equals("WD4")) {
-                        imageView.setImageResource(R.drawable.wd4);
+                        if(lokaal.equals("WD.04.001")){
+                            imageView.setImageResource(R.drawable.wd0401);
+                        }
+                        else if(lokaal.equals("WD.04.002")){
+                            imageView.setImageResource(R.drawable.wd0402);
+                        }
+                        else if(lokaal.equals("WD.04.005")){
+                            imageView.setImageResource(R.drawable.wd0405);
+                        }
+                        else if(lokaal.equals("WD.04.016")){
+                            imageView.setImageResource(R.drawable.wd0416);
+                        }
+                        else if(lokaal.equals("WD.04.020")){
+                            imageView.setImageResource(R.drawable.wd0420);
+                        }
+                        else if(lokaal.equals("WD.04.022")){
+                            imageView.setImageResource(R.drawable.wd0422);
+                        }
+                        else {
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("WD5")) {
-                        imageView.setImageResource(R.drawable.wd5);
+                        if(lokaal.equals("WD.05.001")){
+                            imageView.setImageResource(R.drawable.wd0501);
+                        }
+                        else if(lokaal.equals("WD.05.002")){
+                            imageView.setImageResource(R.drawable.wd0502);
+                        }
+                        else if(lokaal.equals("WD.05.005")){
+                            imageView.setImageResource(R.drawable.wd0505);
+                        }
+                        else if(lokaal.equals("WD.05.013")){
+                            imageView.setImageResource(R.drawable.wd0513);
+                        }
+                        else if(lokaal.equals("WD.05.018")){
+                            imageView.setImageResource(R.drawable.wd0518);
+                        }
+                        else if(lokaal.equals("WD.05.021")){
+                            imageView.setImageResource(R.drawable.wd0521);
+                        }
+                        else if(lokaal.equals("WD.05.027")){
+                            imageView.setImageResource(R.drawable.wd0527);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     }
-                    //WD Gebouw
+                    //WN Gebouw
                     else if (imagefile.equals("WN0")) {
-                        imageView.setImageResource(R.drawable.wn0);
+                        if(lokaal.equals("WN.00.005")){
+                            imageView.setImageResource(R.drawable.wn0005);
+                        }
+                        else if(lokaal.equals("WN.00.008")){
+                            imageView.setImageResource(R.drawable.wn0008);
+                        }
+                        else if(lokaal.equals("WN.00.016")){
+                            imageView.setImageResource(R.drawable.wn0016);
+                        }
+                        else if(lokaal.equals("WN.00.019")){
+                            imageView.setImageResource(R.drawable.wn0019);
+                        }
+                        else if(lokaal.equals("WN.00.0023")){
+                            imageView.setImageResource(R.drawable.wn0023);
+                        }
+                        else if(lokaal.equals("WN.00.024")){
+                            imageView.setImageResource(R.drawable.wn0024);
+                        }
+
+
+
                     } else if (imagefile.equals("WN1")) {
-                        imageView.setImageResource(R.drawable.wn1);
+                        if(lokaal.equals("WN.01.007")){
+                            imageView.setImageResource(R.drawable.wn0107);
+                        }
+                        else if(lokaal.equals("WN.01.014")){
+                            imageView.setImageResource(R.drawable.wn0114);
+                        }
+                        else if(lokaal.equals("WN.01.016")){
+                            imageView.setImageResource(R.drawable.wn0116);
+                        }
+                        else if(lokaal.equals("WN.01.017")){
+                            imageView.setImageResource(R.drawable.wn0117);
+                        }
+                        else if(lokaal.equals("WN.01.020")){
+                            imageView.setImageResource(R.drawable.wn0120);
+                        }
+                        else if(lokaal.equals("WN.01.022")){
+                            imageView.setImageResource(R.drawable.wn0122);
+                        }
+                        else if(lokaal.equals("WN.01.023")){
+                            imageView.setImageResource(R.drawable.wn0123);
+
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("WN2")) {
-                        imageView.setImageResource(R.drawable.wn2);
+                        if(lokaal.equals("WN.02.007")){
+                            imageView.setImageResource(R.drawable.wn0207);
+                        }
+                        else if(lokaal.equals("WN.02.014")){
+                            imageView.setImageResource(R.drawable.wn0214);
+                        }
+                        else if(lokaal.equals("WN.02.016")){
+                            imageView.setImageResource(R.drawable.wn0216);
+                        }
+                        else if(lokaal.equals("WN.02.017")){
+                            imageView.setImageResource(R.drawable.wn0217);
+                        }
+                        else if(lokaal.equals("WN.02.020")){
+                            imageView.setImageResource(R.drawable.wn0220);
+                        }
+                        else if(lokaal.equals("WN.02.022")){
+                            imageView.setImageResource(R.drawable.wn0222);
+                        }
+                        else if(lokaal.equals("WN.02.026")){
+                            imageView.setImageResource(R.drawable.wn0226);
+                        }
+                        else {
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("WN3")) {
-                        imageView.setImageResource(R.drawable.wn3);
+                        if(lokaal.equals("WN.03.007")){
+                            imageView.setImageResource(R.drawable.wn0307);
+                        }
+                        else if(lokaal.equals("WN.03.014")){
+                            imageView.setImageResource(R.drawable.wn0314);
+                        }
+                        else if(lokaal.equals("WN.03.016")){
+                            imageView.setImageResource(R.drawable.wn0316);
+                        }
+                        else if(lokaal.equals("WN.03.017")){
+                            imageView.setImageResource(R.drawable.wn0317);
+                        }
+                        else if(lokaal.equals("WN.03.020")){
+                            imageView.setImageResource(R.drawable.wn0320);
+                        }
+                        else if(lokaal.equals("WN.03.022")){
+                            imageView.setImageResource(R.drawable.wn0322);
+                        }
+                        else if(lokaal.equals("WN.03.023")){
+                            imageView.setImageResource(R.drawable.wn0323);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("WN4")) {
-                        imageView.setImageResource(R.drawable.wn4);
+                        if(lokaal.equals("WN.04.007")){
+                            imageView.setImageResource(R.drawable.wn0407);
+                        }
+                        else if(lokaal.equals("WN.04.014")){
+                            imageView.setImageResource(R.drawable.wn0414);
+                        }
+                        else if(lokaal.equals("WN.04.016")){
+                            imageView.setImageResource(R.drawable.wn0416);
+                        }
+                        else if(lokaal.equals("WN.04.017")){
+                            imageView.setImageResource(R.drawable.wn0417);
+                        }
+                        else if(lokaal.equals("WN.04.020")){
+                            imageView.setImageResource(R.drawable.wn0420);
+                        }
+                        else if(lokaal.equals("WN.04.022")){
+                            imageView.setImageResource(R.drawable.wn0422);
+                        }
+                        else if(lokaal.equals("WN.04.023")){
+                            imageView.setImageResource(R.drawable.wn0423);
+                        }
+                       else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else if (imagefile.equals("WN5")) {
-                        imageView.setImageResource(R.drawable.wn5);
+                        if(lokaal.equals("WN.05.006")){
+                            imageView.setImageResource(R.drawable.wn0506);
+                        }
+                        else if(lokaal.equals("WN.05.016")){
+                            imageView.setImageResource(R.drawable.wn0516);
+                        }
+                        else if(lokaal.equals("WN.05.020")){
+                            imageView.setImageResource(R.drawable.wn0520);
+                        }
+                        else if(lokaal.equals("WN.05.023")){
+                            imageView.setImageResource(R.drawable.wn0523);
+                        }
+                        else if(lokaal.equals("WN.05.025")){
+                            imageView.setImageResource(R.drawable.wn0525);
+                        }
+                        else if(lokaal.equals("WN.05.026")){
+                            imageView.setImageResource(R.drawable.wn0526);
+                        }
+                        else{
+                            button.setError("Dit lokaal bestaat niet");
+                        }
+
                     } else {
                         button.setError("er ging iets fout, ga naar de developers om dit na te gaan");
                     }
