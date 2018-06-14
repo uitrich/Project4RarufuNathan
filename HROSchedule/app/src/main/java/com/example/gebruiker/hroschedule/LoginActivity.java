@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button button;
     private String Lokaalcode;
     private String gebouw;
-    private Integer etage;
+    private String etage;
     private String lokaal;
     private Boolean unlockplattegrond = false;
     private String lokaalsum;
@@ -125,7 +125,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView.setText(lokaalnummer.getText().toString());
-                Lokaalcode = lokaalnummer.getText().toString();
+                Lokaalcode = lokaalnummer.getText().toString().toUpperCase();
+                checkExtras();
                 if (Lokaalcode.contains("H")) {
                     //uitsnijder en splitter
                     gebouw = "H";
@@ -136,20 +137,21 @@ public class LoginActivity extends AppCompatActivity {
 
                     //update textView met informatie over het geselecteerde lokaal
                     String Adres = getGebouw(gebouw);
-                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
 
                 } else if (Lokaalcode.contains("WD")) {
                     //uitsnijder en splitter
                     gebouw = "WD";
                     etage = getEtage(Lokaalcode);
+
                     lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
                     unlockplattegrond = true;
 
                     //update textView met informatie over het geselecteerde lokaal
-                    String Adres = getGebouw(gebouw);
-                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    String adres = getGebouw(gebouw);
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
                 }
                 else if (Lokaalcode.contains("WN")) {
@@ -162,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //update textView met informatie over het geselecteerde lokaal
                     String Adres = getGebouw(gebouw);
-                    String settext = "Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    String settext = "Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
                 } else {
                     unlockplattegrond = false;
@@ -174,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                 //H Gebouw
                 if (unlockplattegrond) {
                     imageView.setVisibility(View.VISIBLE);
-                    if (imagefile.equals("H0")) {
+                    if (imagefile.equals("H0") || imagefile.equals("H00")) {
                         if (lokaal.equals("205")){
                             imageView.setImageResource(R.drawable.h0205);
                         }
@@ -200,9 +202,9 @@ public class LoginActivity extends AppCompatActivity {
                                 imageView.setImageResource(R.drawable.h0405);
                         }
                         else {
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
-                    } else if (imagefile.equals("H1")) {
+                    } else if (imagefile.equals("H1") || imagefile.equals("H01")) {
                         if(lokaal.equals("110")){
                             imageView.setImageResource(R.drawable.h1110);
                         }
@@ -237,10 +239,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.h1403);
                         }
                         else {
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("H2")) {
+                    } else if (imagefile.equals("H2")|| imagefile.equals("H02")) {
                         if(lokaal.equals("111")){
                             imageView.setImageResource(R.drawable.h2111);
                         }
@@ -272,11 +274,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.h2403);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
-                    } else if (imagefile.equals("H3")){
+                    } else if (imagefile.equals("H3")|| imagefile.equals("H03")){
                         if(lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h3109);
                         }
@@ -314,10 +316,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.h3405);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if(imagefile.equals("H4")){
+                    } else if(imagefile.equals("H4")|| imagefile.equals("H04")){
                         if (lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h4109);
                         }
@@ -349,11 +351,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.h4405);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
-                    } else if(imagefile.equals("H5")){
+                    } else if(imagefile.equals("H5")|| imagefile.equals("H05")){
                         if (lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h4109);
                         }
@@ -382,14 +384,14 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.h5405);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
 
                     }
                     //WD gebouw
-                    else if (imagefile.equals("WD0")) {
+                    else if (imagefile.equals("WD0")|| imagefile.equals("WD00")) {
                         if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0001);
                         }
@@ -409,11 +411,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0034);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
-                    } else if (imagefile.equals("WD1")) {
+                    } else if (imagefile.equals("WD1") || imagefile.equals("WD01")) {
                         if(lokaal.equals("003")){
                             imageView.setImageResource(R.drawable.wd0103);
                         }
@@ -430,11 +432,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0121);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
-                    } else if (imagefile.equals("WD2")) {
+                    } else if (imagefile.equals("WD2") || imagefile.equals("WD02")) {
                         if(lokaal.equals("002")){
                             imageView.setImageResource(R.drawable.wd0202);
                         }
@@ -448,11 +450,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0221);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
 
-                    } else if (imagefile.equals("WD3")) {
+                    } else if (imagefile.equals("WD3") || imagefile.equals("WD03")) {
                         if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0301);
                         }
@@ -478,11 +480,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0333);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat");
+                            lokaalnummer.setError("Dit lokaal bestaat");
                         }
 
 
-                    } else if (imagefile.equals("WD4")) {
+                    } else if (imagefile.equals("WD4") || imagefile.equals("WD04")) {
                         if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0401);
                         }
@@ -502,10 +504,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0422);
                         }
                         else {
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("WD5")) {
+                    } else if (imagefile.equals("WD5") || imagefile.equals("WD05")) {
                         if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0501);
                         }
@@ -528,12 +530,12 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wd0527);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
                     }
                     //WN Gebouw
-                    else if (imagefile.equals("WN0")) {
+                    else if (imagefile.equals("WN0") || imagefile.equals("WN00")) {
                         if(lokaal.equals("005")){
                             imageView.setImageResource(R.drawable.wn0005);
                         }
@@ -555,7 +557,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                    } else if (imagefile.equals("WN1")) {
+                    } else if (imagefile.equals("WN1") || imagefile.equals("WN01")) {
                         if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0107);
                         }
@@ -579,10 +581,10 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("WN2")) {
+                    } else if (imagefile.equals("WN2") || imagefile.equals("WN02")) {
                         if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0207);
                         }
@@ -605,10 +607,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wn0226);
                         }
                         else {
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("WN3")) {
+                    } else if (imagefile.equals("WN3") || imagefile.equals("WN03")) {
                         if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0307);
                         }
@@ -631,10 +633,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wn0323);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("WN4")) {
+                    } else if (imagefile.equals("WN4") || imagefile.equals("WN04")) {
                         if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0407);
                         }
@@ -657,10 +659,10 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wn0423);
                         }
                        else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
-                    } else if (imagefile.equals("WN5")) {
+                    } else if (imagefile.equals("WN5") || imagefile.equals("WN05")) {
                         if(lokaal.equals("006")){
                             imageView.setImageResource(R.drawable.wn0506);
                         }
@@ -680,11 +682,11 @@ public class LoginActivity extends AppCompatActivity {
                             imageView.setImageResource(R.drawable.wn0526);
                         }
                         else{
-                            button.setError("Dit lokaal bestaat niet");
+                            lokaalnummer.setError("Dit lokaal bestaat niet");
                         }
 
                     } else {
-                        button.setError("er ging iets fout, ga naar de developers om dit na te gaan");
+                        lokaalnummer.setError("er ging iets fout, ga naar de developers om dit na te gaan");
                     }
 
 
@@ -695,20 +697,36 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public Integer getEtage (String lokaalnr){
+    public String getEtage (String lokaalnr){
         if (lokaalnr.contains(".0.")) {
-            return 0;
+            return "0";
+        } else if (lokaalnr.contains(".00.")) {
+            return "00";
         } else if (lokaalnr.contains(".1.")) {
-            return 1;
+            return "1";
+        } else if (lokaalnr.contains(".01.")) {
+            return "01";
         } else if (lokaalnr.contains(".2.")) {
-            return 2;
+            return "2";
+        } else if (lokaalnr.contains(".02.")) {
+            return "02";
         } else if (lokaalnr.contains(".3.")) {
-            return 3;
+            return "3";
+        } else if (lokaalnr.contains(".03.")) {
+            return "03";
         } else if (lokaalnr.contains(".4.")) {
-            return 4;
-        } else if (lokaalnr.contains(".5.")) {
-            return 5;
-        } else {
+            return "4";
+
+        } else if (lokaalnr.contains(".04.")) {
+            return "04";
+        }
+        else if (lokaalnr.contains(".5.")) {
+            return "5";
+        } else if (lokaalnr.contains(".05.")) {
+            return "05";
+        }
+
+        else {
             lokaalnummer.setError("Het etagenummer van: " + lokaalnr + ", bestaat niet in het CMI");
             lokaalnummer.setText("");
             return null;
@@ -718,6 +736,28 @@ public class LoginActivity extends AppCompatActivity {
     public String getLokaal (String lokaalnr, String lokaalsum){
 
         return lokaalnr.replace(lokaalsum, "");
+
+    }
+    public void checkExtras () {
+        String fug = "techlab WD.04.022 stadslab WN.00.019 bedrijfsbureau WN.00.008 kantine   studentbali servicebalie e&c H.5.113 greenhouse WN.05.006";
+        if (lokaalnummer.getText().toString().toLowerCase().equals("techlab") || lokaalnummer.getText().toString().toLowerCase().equals("tech lab") ) {
+            Lokaalcode = "WD.04.022";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("stadslab") || lokaalnummer.getText().toString().toLowerCase().equals("stads lab") ) {
+            Lokaalcode = "H.0.304";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("bedrijfsbureau") || lokaalnummer.getText().toString().toLowerCase().equals("bedrijfs bureau") ) {
+            Lokaalcode = "WN.00.008";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("kantine") || lokaalnummer.getText().toString().toLowerCase().equals("keuken") ) {
+            Lokaalcode = "H.0.110";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("studentbalie") || lokaalnummer.getText().toString().toLowerCase().equals("student balie") ) {
+            Lokaalcode = "H.0.305";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("service balie") || lokaalnummer.getText().toString().toLowerCase().equals("service balie") || lokaalnummer.getText().toString().toLowerCase().equals("servicedesk") || lokaalnummer.getText().toString().toLowerCase().equals("service desk")) {
+            Lokaalcode = "WD.04.022";
+        }
 
     }
     public String getGebouw(String Gebouwnr) {
