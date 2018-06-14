@@ -127,23 +127,43 @@ public class LoginActivity extends AppCompatActivity {
                 textView.setText(lokaalnummer.getText().toString());
                 Lokaalcode = lokaalnummer.getText().toString();
                 if (Lokaalcode.contains("H")) {
+                    //uitsnijder en splitter
                     gebouw = "H";
                     etage = getEtage(Lokaalcode);
                     lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
                     unlockplattegrond = true;
+
+                    //update textView met informatie over het geselecteerde lokaal
+                    String Adres = getGebouw(gebouw);
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    textView.setText(settext);
+
                 } else if (Lokaalcode.contains("WD")) {
+                    //uitsnijder en splitter
                     gebouw = "WD";
                     etage = getEtage(Lokaalcode);
                     lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
                     unlockplattegrond = true;
-                } else if (Lokaalcode.contains("WN")) {
+
+                    //update textView met informatie over het geselecteerde lokaal
+                    String Adres = getGebouw(gebouw);
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    textView.setText(settext);
+                }
+                else if (Lokaalcode.contains("WN")) {
+                    //uitsnijder en splitter
                     gebouw = "WN";
                     etage = getEtage(Lokaalcode);
                     lokaalsum = gebouw + "." + etage + ".";
                     lokaal = getLokaal(Lokaalcode, lokaalsum);
                     unlockplattegrond = true;
+
+                    //update textView met informatie over het geselecteerde lokaal
+                    String Adres = getGebouw(gebouw);
+                    String settext = "Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: Rotterdam, " + Adres;
+                    textView.setText(settext);
                 } else {
                     unlockplattegrond = false;
                     lokaalnummer.setError("de letter(s) aan het begin van "+ Lokaalcode +" zijn incorrect");
@@ -155,65 +175,65 @@ public class LoginActivity extends AppCompatActivity {
                 if (unlockplattegrond) {
                     imageView.setVisibility(View.VISIBLE);
                     if (imagefile.equals("H0")) {
-                        if (lokaal.equals("H.0.205")){
+                        if (lokaal.equals("205")){
                             imageView.setImageResource(R.drawable.h0205);
                         }
-                        else if(lokaal.equals("H.0.304")){
+                        else if(lokaal.equals("304")){
                             imageView.setImageResource(R.drawable.h0304);
                         }
-                        else if(lokaal.equals("H.0.305")){
+                        else if(lokaal.equals("305")){
                             imageView.setImageResource(R.drawable.h0305);
                         }
-                        else if(lokaal.equals("H.0.309")){
+                        else if(lokaal.equals("309")){
                             imageView.setImageResource(R.drawable.h0309);
                         }
-                        else if(lokaal.equals("H.0.310")){
+                        else if(lokaal.equals("310")){
                             imageView.setImageResource(R.drawable.h0310);
                         }
-                        else if(lokaal.equals("H.0.319")){
+                        else if(lokaal.equals("319")){
                             imageView.setImageResource(R.drawable.h0319);
                         }
-                        else if(lokaal.equals("H.0.321")){
+                        else if(lokaal.equals("321")){
                             imageView.setImageResource(R.drawable.h0321);
                         }
-                        else if(lokaal.equals("H.0.405")){
+                        else if(lokaal.equals("405")){
                                 imageView.setImageResource(R.drawable.h0405);
                         }
                         else {
                             button.setError("Dit lokaal bestaat niet");
                         }
                     } else if (imagefile.equals("H1")) {
-                        if(lokaal.equals("H.1.110")){
+                        if(lokaal.equals("110")){
                             imageView.setImageResource(R.drawable.h1110);
                         }
-                        else if(lokaal.equals("H.1.112")){
+                        else if(lokaal.equals("112")){
                             imageView.setImageResource(R.drawable.h1112);
                         }
-                        else if(lokaal.equals("H.1.114")){
+                        else if(lokaal.equals("114")){
                             imageView.setImageResource(R.drawable.h1114);
                         }
-                        else if(lokaal.equals("H.1.204")){
+                        else if(lokaal.equals("204")){
                             imageView.setImageResource(R.drawable.h1204);
                         }
-                        else if(lokaal.equals("H.1.206")){
+                        else if(lokaal.equals("206")){
                             imageView.setImageResource(R.drawable.h1206);
                         }
-                        else if(lokaal.equals("H.1.306")){
+                        else if(lokaal.equals("306")){
                             imageView.setImageResource(R.drawable.h1306);
                         }
-                        else if(lokaal.equals("H.1.308")){
+                        else if(lokaal.equals("308")){
                             imageView.setImageResource(R.drawable.h1308);
                         }
-                        else if(lokaal.equals("H.1.312")){
+                        else if(lokaal.equals("312")){
                             imageView.setImageResource(R.drawable.h1312);
                         }
-                        else if(lokaal.equals("H.1.315")){
+                        else if(lokaal.equals("315")){
                             imageView.setImageResource(R.drawable.h1315);
                         }
-                        else if(lokaal.equals("H.1.316")){
+                        else if(lokaal.equals("316")){
                             imageView.setImageResource(R.drawable.h1316);
                         }
-                        else if(lokaal.equals("H.1.403")){
+                        else if(lokaal.equals("403")){
                             imageView.setImageResource(R.drawable.h1403);
                         }
                         else {
@@ -221,34 +241,34 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("H2")) {
-                        if(lokaal.equals("H.2.111")){
+                        if(lokaal.equals("111")){
                             imageView.setImageResource(R.drawable.h2111);
                         }
-                        else if(lokaal.equals("H.2.112")){
+                        else if(lokaal.equals("112")){
                             imageView.setImageResource(R.drawable.h2112);
                         }
-                        else if(lokaal.equals("H.2.114")){
+                        else if(lokaal.equals("114")){
                             imageView.setImageResource(R.drawable.h2114);
                         }
-                        else if(lokaal.equals("H.2.204")){
+                        else if(lokaal.equals("204")){
                             imageView.setImageResource(R.drawable.h2204);
                         }
-                        else if(lokaal.equals("H.2.306")){
+                        else if(lokaal.equals("306")){
                             imageView.setImageResource(R.drawable.h2306);
                         }
-                        else if(lokaal.equals("H.2.307")){
+                        else if(lokaal.equals("307")){
                             imageView.setImageResource(R.drawable.h2307);
                         }
-                        else if(lokaal.equals("H.2.308")){
+                        else if(lokaal.equals("308")){
                             imageView.setImageResource(R.drawable.h2308);
                         }
-                        else if(lokaal.equals("H.2.312")){
+                        else if(lokaal.equals("312")){
                             imageView.setImageResource(R.drawable.h2312);
                         }
-                        else if(lokaal.equals("H.2.318")){
+                        else if(lokaal.equals("318")){
                             imageView.setImageResource(R.drawable.h2318);
                         }
-                        else if(lokaal.equals("H.2.403")){
+                        else if(lokaal.equals("403")){
                             imageView.setImageResource(R.drawable.h2403);
                         }
                         else{
@@ -257,40 +277,40 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if (imagefile.equals("H3")){
-                        if(lokaal.equals("H.3.109")){
+                        if(lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h3109);
                         }
-                        else if(lokaal.equals("H.3.111")){
+                        else if(lokaal.equals("111")){
                             imageView.setImageResource(R.drawable.h3111);
                         }
-                        else if(lokaal.equals("H.3.204")){
+                        else if(lokaal.equals("204")){
                             imageView.setImageResource(R.drawable.h3204);
                         }
-                        else if(lokaal.equals("H.3.206")){
+                        else if(lokaal.equals("206")){
                             imageView.setImageResource(R.drawable.h3206);
                         }
-                        else if(lokaal.equals("H.3.306")){
+                        else if(lokaal.equals("306")){
                             imageView.setImageResource(R.drawable.h3306);
                         }
-                        else if(lokaal.equals("H.3.307")){
+                        else if(lokaal.equals("307")){
                             imageView.setImageResource(R.drawable.h3307);
                         }
-                        else if(lokaal.equals("H.3.308")){
+                        else if(lokaal.equals("308")){
                             imageView.setImageResource(R.drawable.h3308);
                         }
-                        else if(lokaal.equals("H.3.312")){
+                        else if(lokaal.equals("312")){
                             imageView.setImageResource(R.drawable.h3312);
                         }
-                        else if(lokaal.equals("H.3.318")){
+                        else if(lokaal.equals("318")){
                             imageView.setImageResource(R.drawable.h3318);
                         }
-                        else if(lokaal.equals("H.3.319")){
+                        else if(lokaal.equals("319")){
                             imageView.setImageResource(R.drawable.h3319);
                         }
-                        else if(lokaal.equals("H.3.403")){
+                        else if(lokaal.equals("403")){
                             imageView.setImageResource(R.drawable.h3403);
                         }
-                        else if(lokaal.equals("H.3.405")){
+                        else if(lokaal.equals("405")){
                             imageView.setImageResource(R.drawable.h3405);
                         }
                         else{
@@ -298,34 +318,34 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if(imagefile.equals("H4")){
-                        if (lokaal.equals("H.4.109")){
+                        if (lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h4109);
                         }
-                        else if (lokaal.equals("H.4.111")){
+                        else if (lokaal.equals("111")){
                             imageView.setImageResource(R.drawable.h4111);
                         }
-                        else if (lokaal.equals("H.4.115")){
+                        else if (lokaal.equals("115")){
                             imageView.setImageResource(R.drawable.h4115);
                         }
-                        else if (lokaal.equals("H.4.204")){
+                        else if (lokaal.equals("204")){
                             imageView.setImageResource(R.drawable.h4204);
                         }
-                        else if (lokaal.equals("H.4.306")){
+                        else if (lokaal.equals("306")){
                             imageView.setImageResource(R.drawable.h4306);
                         }
-                        else if (lokaal.equals("H.4.308")){
+                        else if (lokaal.equals("308")){
                             imageView.setImageResource(R.drawable.h4308);
                         }
-                        else if (lokaal.equals("H.4.312")){
+                        else if (lokaal.equals("312")){
                             imageView.setImageResource(R.drawable.h4312);
                         }
-                        else if (lokaal.equals("H.4.318")){
+                        else if (lokaal.equals("318")){
                             imageView.setImageResource(R.drawable.h4318);
                         }
-                        else if (lokaal.equals("H.4.403")){
+                        else if (lokaal.equals("403")){
                             imageView.setImageResource(R.drawable.h4403);
                         }
-                        else if (lokaal.equals("H.4.405")){
+                        else if (lokaal.equals("405")){
                             imageView.setImageResource(R.drawable.h4405);
                         }
                         else{
@@ -334,31 +354,31 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if(imagefile.equals("H5")){
-                        if (lokaal.equals("H.5.109")){
+                        if (lokaal.equals("109")){
                             imageView.setImageResource(R.drawable.h4109);
                         }
-                        else if (lokaal.equals("H.5.113")){
+                        else if (lokaal.equals("113")){
                             imageView.setImageResource(R.drawable.h5113);
                         }
-                        else if (lokaal.equals("H.5.204")){
+                        else if (lokaal.equals("204")){
                             imageView.setImageResource(R.drawable.h5204);
                         }
-                        else if (lokaal.equals("H.5.205")){
+                        else if (lokaal.equals("205")){
                             imageView.setImageResource(R.drawable.h5205);
                         }
-                        else if (lokaal.equals("H.5.208")){
+                        else if (lokaal.equals("208")){
                             imageView.setImageResource(R.drawable.h5208);
                         }
-                        else if (lokaal.equals("H.5.314")){
+                        else if (lokaal.equals("314")){
                             imageView.setImageResource(R.drawable.h5314);
                         }
-                        else if (lokaal.equals("H.5.401")){
+                        else if (lokaal.equals("401")){
                             imageView.setImageResource(R.drawable.h5401);
                         }
-                        else if (lokaal.equals("H.5.404")){
+                        else if (lokaal.equals("404")){
                             imageView.setImageResource(R.drawable.h5404);
                         }
-                        else if (lokaal.equals("H.5.405")){
+                        else if (lokaal.equals("405")){
                             imageView.setImageResource(R.drawable.h5405);
                         }
                         else{
@@ -370,22 +390,22 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     //WD gebouw
                     else if (imagefile.equals("WD0")) {
-                        if(lokaal.equals("WD.00.001")){
+                        if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0001);
                         }
-                        else if(lokaal.equals("WD.00.004")){
+                        else if(lokaal.equals("004")){
                             imageView.setImageResource(R.drawable.wd0004);
                         }
-                        else if(lokaal.equals("WD.00.013")){
+                        else if(lokaal.equals("013")){
                             imageView.setImageResource(R.drawable.wd0013);
                         }
-                        else if(lokaal.equals("WD.00.018")){
+                        else if(lokaal.equals("018")){
                             imageView.setImageResource(R.drawable.wd0018);
                         }
-                        else if(lokaal.equals("WD.00.026")){
+                        else if(lokaal.equals("026")){
                             imageView.setImageResource(R.drawable.wd0026);
                         }
-                        else if(lokaal.equals("WD.00.034")){
+                        else if(lokaal.equals("034")){
                             imageView.setImageResource(R.drawable.wd0034);
                         }
                         else{
@@ -394,19 +414,19 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if (imagefile.equals("WD1")) {
-                        if(lokaal.equals("WD.01.003")){
+                        if(lokaal.equals("003")){
                             imageView.setImageResource(R.drawable.wd0103);
                         }
-                        else if(lokaal.equals("WD.01.003")){
+                        else if(lokaal.equals("003")){
                             imageView.setImageResource(R.drawable.wd0103);
                         }
-                        else if(lokaal.equals("WD.01.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wd0116);
                         }
-                        else if(lokaal.equals("WD.01.019")){
+                        else if(lokaal.equals("019")){
                             imageView.setImageResource(R.drawable.wd0119);
                         }
-                        else if(lokaal.equals("WD.01.021")){
+                        else if(lokaal.equals("021")){
                             imageView.setImageResource(R.drawable.wd0121);
                         }
                         else{
@@ -415,16 +435,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if (imagefile.equals("WD2")) {
-                        if(lokaal.equals("WD.02.002")){
+                        if(lokaal.equals("002")){
                             imageView.setImageResource(R.drawable.wd0202);
                         }
-                        else if(lokaal.equals("WD.02.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wd0216);
                         }
-                        else if(lokaal.equals("WD.02.019")){
+                        else if(lokaal.equals("019")){
                             imageView.setImageResource(R.drawable.wd0219);
                         }
-                        else if(lokaal.equals("WD.02.021")){
+                        else if(lokaal.equals("021")){
                             imageView.setImageResource(R.drawable.wd0221);
                         }
                         else{
@@ -433,28 +453,28 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if (imagefile.equals("WD3")) {
-                        if(lokaal.equals("WD.03.001")){
+                        if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0301);
                         }
-                        else if(lokaal.equals("WD.03.005")){
+                        else if(lokaal.equals("005")){
                             imageView.setImageResource(R.drawable.wd0305);
                         }
-                        else if(lokaal.equals("WD.03.013")){
+                        else if(lokaal.equals("013")){
                             imageView.setImageResource(R.drawable.wd0313);
                         }
-                        else if(lokaal.equals("WD.03.019")){
+                        else if(lokaal.equals("019")){
                             imageView.setImageResource(R.drawable.wd0319);
                         }
-                        else if(lokaal.equals("WD.03.021")){
+                        else if(lokaal.equals("021")){
                             imageView.setImageResource(R.drawable.wd0321);
                         }
-                        else if(lokaal.equals("WD.03.023")){
+                        else if(lokaal.equals("023")){
                             imageView.setImageResource(R.drawable.wd0323);
                         }
-                        else if(lokaal.equals("WD.03.028")){
+                        else if(lokaal.equals("028")){
                             imageView.setImageResource(R.drawable.wd0328);
                         }
-                        else if(lokaal.equals("WD.03.033")){
+                        else if(lokaal.equals("033")){
                             imageView.setImageResource(R.drawable.wd0333);
                         }
                         else{
@@ -463,22 +483,22 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else if (imagefile.equals("WD4")) {
-                        if(lokaal.equals("WD.04.001")){
+                        if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0401);
                         }
-                        else if(lokaal.equals("WD.04.002")){
+                        else if(lokaal.equals("002")){
                             imageView.setImageResource(R.drawable.wd0402);
                         }
-                        else if(lokaal.equals("WD.04.005")){
+                        else if(lokaal.equals("005")){
                             imageView.setImageResource(R.drawable.wd0405);
                         }
-                        else if(lokaal.equals("WD.04.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wd0416);
                         }
-                        else if(lokaal.equals("WD.04.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wd0420);
                         }
-                        else if(lokaal.equals("WD.04.022")){
+                        else if(lokaal.equals("022")){
                             imageView.setImageResource(R.drawable.wd0422);
                         }
                         else {
@@ -486,25 +506,25 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("WD5")) {
-                        if(lokaal.equals("WD.05.001")){
+                        if(lokaal.equals("001")){
                             imageView.setImageResource(R.drawable.wd0501);
                         }
-                        else if(lokaal.equals("WD.05.002")){
+                        else if(lokaal.equals("002")){
                             imageView.setImageResource(R.drawable.wd0502);
                         }
-                        else if(lokaal.equals("WD.05.005")){
+                        else if(lokaal.equals("005")){
                             imageView.setImageResource(R.drawable.wd0505);
                         }
-                        else if(lokaal.equals("WD.05.013")){
+                        else if(lokaal.equals("013")){
                             imageView.setImageResource(R.drawable.wd0513);
                         }
-                        else if(lokaal.equals("WD.05.018")){
+                        else if(lokaal.equals("018")){
                             imageView.setImageResource(R.drawable.wd0518);
                         }
-                        else if(lokaal.equals("WD.05.021")){
+                        else if(lokaal.equals("021")){
                             imageView.setImageResource(R.drawable.wd0521);
                         }
-                        else if(lokaal.equals("WD.05.027")){
+                        else if(lokaal.equals("027")){
                             imageView.setImageResource(R.drawable.wd0527);
                         }
                         else{
@@ -514,47 +534,47 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     //WN Gebouw
                     else if (imagefile.equals("WN0")) {
-                        if(lokaal.equals("WN.00.005")){
+                        if(lokaal.equals("005")){
                             imageView.setImageResource(R.drawable.wn0005);
                         }
-                        else if(lokaal.equals("WN.00.008")){
+                        else if(lokaal.equals("008")){
                             imageView.setImageResource(R.drawable.wn0008);
                         }
-                        else if(lokaal.equals("WN.00.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0016);
                         }
-                        else if(lokaal.equals("WN.00.019")){
+                        else if(lokaal.equals("019")){
                             imageView.setImageResource(R.drawable.wn0019);
                         }
-                        else if(lokaal.equals("WN.00.0023")){
+                        else if(lokaal.equals("0023")){
                             imageView.setImageResource(R.drawable.wn0023);
                         }
-                        else if(lokaal.equals("WN.00.024")){
+                        else if(lokaal.equals("024")){
                             imageView.setImageResource(R.drawable.wn0024);
                         }
 
 
 
                     } else if (imagefile.equals("WN1")) {
-                        if(lokaal.equals("WN.01.007")){
+                        if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0107);
                         }
-                        else if(lokaal.equals("WN.01.014")){
+                        else if(lokaal.equals("014")){
                             imageView.setImageResource(R.drawable.wn0114);
                         }
-                        else if(lokaal.equals("WN.01.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0116);
                         }
-                        else if(lokaal.equals("WN.01.017")){
+                        else if(lokaal.equals("017")){
                             imageView.setImageResource(R.drawable.wn0117);
                         }
-                        else if(lokaal.equals("WN.01.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wn0120);
                         }
-                        else if(lokaal.equals("WN.01.022")){
+                        else if(lokaal.equals("022")){
                             imageView.setImageResource(R.drawable.wn0122);
                         }
-                        else if(lokaal.equals("WN.01.023")){
+                        else if(lokaal.equals("023")){
                             imageView.setImageResource(R.drawable.wn0123);
 
                         }
@@ -563,25 +583,25 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("WN2")) {
-                        if(lokaal.equals("WN.02.007")){
+                        if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0207);
                         }
-                        else if(lokaal.equals("WN.02.014")){
+                        else if(lokaal.equals("014")){
                             imageView.setImageResource(R.drawable.wn0214);
                         }
-                        else if(lokaal.equals("WN.02.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0216);
                         }
-                        else if(lokaal.equals("WN.02.017")){
+                        else if(lokaal.equals("017")){
                             imageView.setImageResource(R.drawable.wn0217);
                         }
-                        else if(lokaal.equals("WN.02.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wn0220);
                         }
-                        else if(lokaal.equals("WN.02.022")){
+                        else if(lokaal.equals("022")){
                             imageView.setImageResource(R.drawable.wn0222);
                         }
-                        else if(lokaal.equals("WN.02.026")){
+                        else if(lokaal.equals("026")){
                             imageView.setImageResource(R.drawable.wn0226);
                         }
                         else {
@@ -589,25 +609,25 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("WN3")) {
-                        if(lokaal.equals("WN.03.007")){
+                        if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0307);
                         }
-                        else if(lokaal.equals("WN.03.014")){
+                        else if(lokaal.equals("014")){
                             imageView.setImageResource(R.drawable.wn0314);
                         }
-                        else if(lokaal.equals("WN.03.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0316);
                         }
-                        else if(lokaal.equals("WN.03.017")){
+                        else if(lokaal.equals("017")){
                             imageView.setImageResource(R.drawable.wn0317);
                         }
-                        else if(lokaal.equals("WN.03.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wn0320);
                         }
-                        else if(lokaal.equals("WN.03.022")){
+                        else if(lokaal.equals("022")){
                             imageView.setImageResource(R.drawable.wn0322);
                         }
-                        else if(lokaal.equals("WN.03.023")){
+                        else if(lokaal.equals("023")){
                             imageView.setImageResource(R.drawable.wn0323);
                         }
                         else{
@@ -615,25 +635,25 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("WN4")) {
-                        if(lokaal.equals("WN.04.007")){
+                        if(lokaal.equals("007")){
                             imageView.setImageResource(R.drawable.wn0407);
                         }
-                        else if(lokaal.equals("WN.04.014")){
+                        else if(lokaal.equals("014")){
                             imageView.setImageResource(R.drawable.wn0414);
                         }
-                        else if(lokaal.equals("WN.04.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0416);
                         }
-                        else if(lokaal.equals("WN.04.017")){
+                        else if(lokaal.equals("017")){
                             imageView.setImageResource(R.drawable.wn0417);
                         }
-                        else if(lokaal.equals("WN.04.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wn0420);
                         }
-                        else if(lokaal.equals("WN.04.022")){
+                        else if(lokaal.equals("022")){
                             imageView.setImageResource(R.drawable.wn0422);
                         }
-                        else if(lokaal.equals("WN.04.023")){
+                        else if(lokaal.equals("023")){
                             imageView.setImageResource(R.drawable.wn0423);
                         }
                        else{
@@ -641,22 +661,22 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else if (imagefile.equals("WN5")) {
-                        if(lokaal.equals("WN.05.006")){
+                        if(lokaal.equals("006")){
                             imageView.setImageResource(R.drawable.wn0506);
                         }
-                        else if(lokaal.equals("WN.05.016")){
+                        else if(lokaal.equals("016")){
                             imageView.setImageResource(R.drawable.wn0516);
                         }
-                        else if(lokaal.equals("WN.05.020")){
+                        else if(lokaal.equals("020")){
                             imageView.setImageResource(R.drawable.wn0520);
                         }
-                        else if(lokaal.equals("WN.05.023")){
+                        else if(lokaal.equals("023")){
                             imageView.setImageResource(R.drawable.wn0523);
                         }
-                        else if(lokaal.equals("WN.05.025")){
+                        else if(lokaal.equals("025")){
                             imageView.setImageResource(R.drawable.wn0525);
                         }
-                        else if(lokaal.equals("WN.05.026")){
+                        else if(lokaal.equals("026")){
                             imageView.setImageResource(R.drawable.wn0526);
                         }
                         else{
@@ -699,6 +719,20 @@ public class LoginActivity extends AppCompatActivity {
 
         return lokaalnr.replace(lokaalsum, "");
 
+    }
+    public String getGebouw(String Gebouwnr) {
+        if (Gebouwnr.equals("H")) {
+            return "Wijnhaven 107";
+        }
+        if (Gebouwnr.equals("WD")) {
+            return "Wijnhaven 103";
+        }
+        if (Gebouwnr.equals("WN")) {
+            return "Wijnhaven 101";
+        }
+        else {
+            return "";
+        }
     }
 
 }
