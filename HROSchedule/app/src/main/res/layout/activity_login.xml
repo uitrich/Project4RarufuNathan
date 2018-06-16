@@ -13,6 +13,7 @@
     tools:context=".LoginActivity">
 
     <!-- Login progress -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,7 +28,35 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/Lokaalnummer"
             android:id="@+id/button"
-            android:text="zoek op"/>
+            android:text="zoek op"
+        />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Spinner"
+            android:visibility="invisible"/>
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Spinner"
+            android:visibility="invisible" />
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/spinner1"
+            android:visibility="invisible" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Lokaalnummer"
+            android:layout_alignParentRight="true"
+            android:text="Versimpel" />
+
         <TextView
             android:layout_width="200dp"
             android:layout_height="20dp"

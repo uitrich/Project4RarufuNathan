@@ -29,12 +29,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.view.animation.AnimationUtils;
@@ -101,16 +103,33 @@ public class LoginActivity extends AppCompatActivity {
     private Button item3;
 
     //ext
-    private String ExtVaknaam;
-    private String ExtLokaal;
-    private Boolean ExtItemMade = false;
-    private Boolean Agendaitemselected = false;
+    private Boolean Dropdownenabled = false;
+    private String DDMGebouw;
+    private String DDMEtage;
+    private String DDMLokaal;
+    private Boolean DDMSeqCompleted;
+
+    Switch aSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
+
+        final Spinner dropdownGebouw = findViewById(R.id.Spinner);
+        String[] itemsGebouw = new String[]{"H", "WD", "WN"};
+        ArrayAdapter<String> adapterGebouw = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGebouw);
+        dropdownGebouw.setAdapter(adapterGebouw);
+
+        final Spinner dropdownEtage = findViewById(R.id.spinner1);
+        String[] itemsEtage = new String[]{"1", "2", "3", "4", "5"};
+        ArrayAdapter<String> adapterEtage = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsEtage);
+        dropdownEtage.setAdapter(adapterEtage);
+
+        final Spinner dropdownLokaal = findViewById(R.id.spinner2);
+        String[] itemsLokaal = new String[]{"H", "WD", "WN"};
+        ArrayAdapter<String> adapterLokaal = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsLokaal);
+        dropdownLokaal.setAdapter(adapterLokaal);
 
         lokaalnummer = findViewById(R.id.Lokaalnummer);
         button = findViewById(R.id.button);
@@ -118,14 +137,45 @@ public class LoginActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
 
+        aSwitch = findViewById(R.id.switch2);
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (aSwitch.isChecked()) {
+                    lokaalnummer.setVisibility(View.INVISIBLE);
+                    dropdownGebouw.setVisibility(View.VISIBLE);
+                    DDMGebouw = dropdownGebouw.getSelectedItem().toString();
+                    Dropdownenabled = false;
+                }
+            }
+        });
 
-        ExtItemMade = false;
 
+        dropdownGebouw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dropdownEtage.setVisibility(View.VISIBLE);
+                DDMEtage = dropdownEtage.getSelectedItem().toString();
+            }
+        });
+        dropdownEtage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dropdownLokaal.setVisibility(View.VISIBLE);
+                DDMLokaal = dropdownLokaal.getSelectedItem().toString();
+                DDMSeqCompleted = true;
+            }
+        });
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 textView.setText(lokaalnummer.getText().toString());
-                Lokaalcode = lokaalnummer.getText().toString().toUpperCase();
+                if (Dropdownenabled && DDMSeqCompleted) {
+                    Lokaalcode = DDMGebouw + "." + DDMEtage + "." + DDMLokaal;
+                }
+                else {
+                    Lokaalcode = lokaalnummer.getText().toString().toUpperCase();
+                }
                 checkExtras();
                 if (Lokaalcode.contains("H")) {
                     //uitsnijder en splitter
