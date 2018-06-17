@@ -126,6 +126,57 @@ public class LoginActivity extends AppCompatActivity {
         dropdownGebouw.setVisibility(View.INVISIBLE);
 
 
+<<<<<<< HEAD
+=======
+        dropdownGebouw.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (aSwitch.isChecked()) {
+                    dropdownEtage.setVisibility(View.VISIBLE);
+                    DDMGebouw = dropdownGebouw.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        dropdownEtage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (aSwitch.isChecked()) {
+                    DDMEtage = dropdownEtage.getSelectedItem().toString();
+                    dropdownLokaal.setVisibility(View.VISIBLE);
+                    strings = SetlokaalPos(DDMGebouw, DDMEtage);
+                    for (int i=0; i>strings.length;i++){
+                        adapterLokaal.add(strings[i]);
+                    }
+                    dropdownLokaal.setAdapter(adapterLokaal);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        dropdownLokaal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (aSwitch.isChecked()) {
+                    DDMLokaal = dropdownLokaal.getSelectedItem().toString();
+                    DDMSeqCompleted = true;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                
+            }
+        });
+>>>>>>> c1f1f18bcc5d67a0154695c02667bc028baa352b
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
