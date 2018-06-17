@@ -102,14 +102,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button item2;
     private Button item3;
 
-    //ext
+    //ext+
     private Boolean Dropdownenabled = false;
     private String DDMGebouw;
     private String DDMEtage;
     private String DDMLokaal;
     private Boolean DDMSeqCompleted;
 
-    Switch aSwitch;
+    private Switch aSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +133,9 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.tester);
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
+        dropdownGebouw.setVisibility(View.INVISIBLE);
+        dropdownEtage.setVisibility(View.INVISIBLE);
+        dropdownLokaal.setVisibility(View.INVISIBLE);
 
         aSwitch = findViewById(R.id.switch2);
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -151,8 +154,10 @@ public class LoginActivity extends AppCompatActivity {
         dropdownGebouw.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                dropdownEtage.setVisibility(View.VISIBLE);
-                DDMEtage = dropdownEtage.getSelectedItem().toString();
+                if (aSwitch.isChecked()) {
+                    dropdownEtage.setVisibility(View.VISIBLE);
+                    DDMGebouw = dropdownGebouw.getSelectedItem().toString();
+                }
             }
 
             @Override
@@ -163,11 +168,12 @@ public class LoginActivity extends AppCompatActivity {
         dropdownEtage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (aSwitch.isChecked()) {
+                    DDMEtage = dropdownEtage.getSelectedItem().toString();
+                    dropdownLokaal.setVisibility(View.VISIBLE);
 
-                dropdownLokaal.setVisibility(View.VISIBLE);
-
-                //hier komt de adapter.
-
+                    //hier komt de adapter.
+                }
             }
 
             @Override
@@ -178,8 +184,10 @@ public class LoginActivity extends AppCompatActivity {
         dropdownLokaal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DDMLokaal = dropdownLokaal.getSelectedItem().toString();
-                DDMSeqCompleted = true;
+                if (aSwitch.isChecked()) {
+                    DDMLokaal = dropdownLokaal.getSelectedItem().toString();
+                    DDMSeqCompleted = true;
+                }
             }
 
             @Override
