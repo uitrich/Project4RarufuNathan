@@ -127,9 +127,6 @@ public class LoginActivity extends AppCompatActivity {
         dropdownEtage.setAdapter(adapterEtage);
 
         final Spinner dropdownLokaal = findViewById(R.id.spinner2);
-        String[] itemsLokaal = new String[]{"H", "WD", "WN"};
-        ArrayAdapter<String> adapterLokaal = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsLokaal);
-        dropdownLokaal.setAdapter(adapterLokaal);
 
         lokaalnummer = findViewById(R.id.Lokaalnummer);
         button = findViewById(R.id.button);
@@ -156,6 +153,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 dropdownEtage.setVisibility(View.VISIBLE);
                 DDMEtage = dropdownEtage.getSelectedItem().toString();
+
+                String[] itemsLokaal = new String[]{"1", "2", "3", "4", "5"};
+
+                itemsLokaal = SetlokaalPos(DDMGebouw, DDMEtage);
+                ArrayAdapter<CharSequence> adapterLokaal = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_dropdown_item, itemsLokaal);
+
+                dropdownLokaal.setAdapter(adapterLokaal);
             }
         });
         dropdownEtage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -822,6 +826,103 @@ public class LoginActivity extends AppCompatActivity {
         }
         else {
             return "";
+        }
+    }
+    public String[] SetlokaalPos(String Gebouw,String Etage) {
+        if (Gebouw.equals("H")) {
+            if (Etage.equals("0")) {
+                String[] DLokaal = new String[]{"205", "304", "305", "309", "310", "310", "319", "321", "405"};
+                return DLokaal;
+            }
+            if (Etage.equals("1")) {
+                String[] DLokaal = new String[]{"110", "112", "114", "204", "206", "306", "308", "312", "315", "318", "316", "403"};
+                return DLokaal;
+            }
+            if (Etage.equals("2")) {
+                String[] DLokaal = new String[]{"111", "112", "114", "204", "306", "307", "312", "318", "403"};
+                return DLokaal;
+            }
+            if (Etage.equals("3")) {
+                String[] DLokaal = new String[]{"109", "111", "204", "206", "306", "307", "308", "312", "318", "319", "403", "405"};
+                return DLokaal;
+            }
+            if (Etage.equals("4")) {
+                String[] Dlokaal = new String[]{"109", "111", "115", "204", "206", "306", "308", "312", "318", "403", "405", "109"};
+                return Dlokaal;
+            }
+            if (Etage.equals("5")) {
+                String[] Dlokaal = new String[]{"109", "113", "204", "205", "208", "314", "401", "404", "405"};
+                return Dlokaal;
+            }
+            else {
+                String[] DLokaal = new String[]{"error 404 Etage not found"};
+                return DLokaal;
+            }
+
+        }
+        else if (Gebouw.equals("WD")){
+            if (Etage.equals("0")) {
+                String[] DLokaal = new String[]{"001", "004", "013", "018", "034"};
+                return DLokaal;
+            }
+            if (Etage.equals("1")) {
+                String[] DLokaal = new String[]{"003", "016", "019", "021"};
+                return DLokaal;
+            }
+            if (Etage.equals("2")) {
+                String[] DLokaal = new String[]{"002", "016", "019", "021"};
+                return DLokaal;
+            }
+            if (Etage.equals("3")) {
+                String[] DLokaal = new String[]{"001", "005", "013", "019", "021", "023", "028", "033"};
+                return DLokaal;
+            }
+            if (Etage.equals("4")) {
+                String[] Dlokaal = new String[]{"001", "002", "005", "016", "020", "022"};
+                return Dlokaal;
+            }
+            if (Etage.equals("5")) {
+                String[] Dlokaal = new String[]{"001", "002", "005", "013", "018", "021", "027"};
+                return Dlokaal;
+            }
+            else {
+                String[] DLokaal = new String[]{"error 404 Etage not found"};
+                return DLokaal;
+            }
+        }
+        else if (Gebouw.equals("WN")){
+            if (Etage.equals("0")) {
+                String[] DLokaal = new String[]{"002", "005", "008", "016", "019", "023", "024"};
+                return DLokaal;
+            }
+            if (Etage.equals("1")) {
+                String[] DLokaal = new String[]{"007", "014", "016", "017", "020", "022", "023"};
+                return DLokaal;
+            }
+            if (Etage.equals("2")) {
+                String[] DLokaal = new String[]{"007", "014", "016", "017", "020", "022", "026"};
+                return DLokaal;
+            }
+            if (Etage.equals("3")) {
+                String[] DLokaal = new String[]{"007", "014", "016", "017", "020", "022", "023"};
+                return DLokaal;
+            }
+            if (Etage.equals("4")) {
+                String[] Dlokaal = new String[]{"007", "014", "016", "017", "020", "022"};
+                return Dlokaal;
+            }
+            if (Etage.equals("5")) {
+                String[] Dlokaal = new String[]{"006", "016", "020", "023", "025", "026"};
+                return Dlokaal;
+            }
+            else {
+                String[] DLokaal = new String[]{"error 404 Etage not found"};
+                return DLokaal;
+            }
+        }
+        else {
+            String[] error = new String[]{"error 405 Gebouw not found"};
+            return error;
         }
     }
 
