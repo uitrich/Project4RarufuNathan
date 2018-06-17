@@ -123,9 +123,6 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.tester);
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
-        dropdownGebouw.setVisibility(View.INVISIBLE);
-
-
 
         button.setOnClickListener(new OnClickListener() {
             @Override
