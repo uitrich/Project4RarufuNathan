@@ -150,6 +150,8 @@ public class LoginActivity extends AppCompatActivity {
                 else if (aSwitch.isChecked()== false) {
                     lokaalnummer.setVisibility(View.VISIBLE);
                     dropdownGebouw.setVisibility(View.INVISIBLE);
+                    dropdownEtage.setVisibility(View.INVISIBLE);
+                    dropdownLokaal.setVisibility(View.INVISIBLE);
                 }
             }
         });
