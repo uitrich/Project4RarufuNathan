@@ -52,8 +52,10 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import net.fortuna.ical4j.model.*;
+import net.fortuna.ical4j.util.Strings;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.net.wifi.WifiConfiguration.PairwiseCipher.strings;
 
 
 /**
@@ -108,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
     private String DDMEtage;
     private String DDMLokaal;
     private Boolean DDMSeqCompleted;
+    private String[] strings = new String[]{"nothing"};
 
     private Switch aSwitch;
 
@@ -127,6 +130,8 @@ public class LoginActivity extends AppCompatActivity {
         dropdownEtage.setAdapter(adapterEtage);
 
         final Spinner dropdownLokaal = findViewById(R.id.spinner2);
+
+        final ArrayAdapter<String> adapterLokaal = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, strings);
 
         lokaalnummer = findViewById(R.id.Lokaalnummer);
         button = findViewById(R.id.button);
@@ -177,9 +182,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (aSwitch.isChecked()) {
                     DDMEtage = dropdownEtage.getSelectedItem().toString();
                     dropdownLokaal.setVisibility(View.VISIBLE);
+                    strings = SetlokaalPos(DDMGebouw, DDMEtage);
+                    adapterLokaal.addAll(strings);
 
-                    String[] strings = SetlokaalPos(DDMGebouw, DDMEtage);
-                    ArrayAdapter<String> adapterLokaal = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, strings);
                     dropdownEtage.setAdapter(adapterLokaal);
                 }
             }
