@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Spinner dropdownGebouw = findViewById(R.id.Spinner);
         String[] itemsGebouw = new String[]{"empty", "H.0.205", "H.0.304", "H.0.305" , "H.0.309", "H.0.319", "H.0.321", "H.0.405", "H.1.110", "H.1.112", "H.1.114", "H.1.204", "H.1.206", "H.1.306", "H.1.308", "H.1.312", "H.1.315", "H.1.316", "H.1.318", "H.1.403", "H.2.111", "H.2.112", "H.2.114", "H.2.204", "H.2.306", "H.2.307", "H.2.308", "H.2.312", "H.2.318", "H.2.403", "H.3.109", "H.3.111", "H.3.204", "H.3.206", "H.3.306", "H.3.307", "H.3.308", "H.3.312", "H.3.318", "H.3.319", "H.3.403", "H.3.405", "H.4.109", "H.4.111", "H.4.115", "H.4.204", "H.4.206", "H.4.306", "H.4.308", "H.4.312", "H.4.318", "H.4.403", "H.4.405", "H.5.109", "H.5.113", "H.5.204", "H.5.205", "H.5.208", "H.5.314", "H.5.401", "H.5.404",  "H.5.405","WD.00.001", "WD.00.004", "WD.00.013", "WD.00.018", "WD.00.026", "WD.00.034", "WD.01.003", "WD.01.016", "WD.01.019", "WD.01.021", "WD.02.002", "WD.02.016", "WD.02.019", "WD.02.021", "WD.03.001", "WD.03.005", "WD.03.013", "WD.03.019", "WD.03.021", "WD.03.023", "WD.03.028", "WD.03.033", "WD.04.001", "WD.04.002", "WD.04.005", "WD.04.016", "WD.04.020", "WD.04.022", "WD.05.001", "WD.05.002", "WD.05.005", "WD.05.013", "WD.05.018", "WD.05.021", "WD.05.027","WN.00.002", "WN.00.005", "WN.00.008", "WN.00.016", "WN.00.019", "WN.00.023", "WN.00.024", "WN.01.007", "WN.01.014", "WN.01.016", "WN.01.017", "WN.01.020", "WN.01.022", "WN.01.023", "WN.02.007", "WN.02.014", "WN.02.016", "WN.02.017", "WN.02.020", "WN.02.022", "WN.02.026", "WN.03.007", "WN.03.014", "WN.03.016", "WN.03.017", "WN.03.020", "WN.03.022", "WN.03.023", "WN.04.007", "WN.04.014", "WN.04.016", "WN.04.017", "WN.04.020", "WN.04.022", "WN.04.023", "WN.05.006", "WN.05.016", "WN.05.020", "WN.05.023", "WN.05.025", "WN.05.026"};
-        ArrayAdapter<String> adapterGebouw = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGebouw);
+        final ArrayAdapter<String> adapterGebouw = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGebouw);
         dropdownGebouw.setAdapter(adapterGebouw);
 
 
@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView.setText(lokaalnummer.getText().toString());
-                if (!dropdownGebouw.getSelectedItem().toString().equals("empty")) {
+                if (!dropdownGebouw.getSelectedItem().toString().equals("empty") && lokaalnummer.getText().toString().isEmpty()) {
                     Lokaalcode = dropdownGebouw.getSelectedItem().toString();
                     lokaalnummer.setText("");
                 }
