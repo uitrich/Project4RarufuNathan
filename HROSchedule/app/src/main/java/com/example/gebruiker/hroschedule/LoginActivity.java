@@ -178,7 +178,9 @@ public class LoginActivity extends AppCompatActivity {
                     DDMEtage = dropdownEtage.getSelectedItem().toString();
                     dropdownLokaal.setVisibility(View.VISIBLE);
 
-                    //hier komt de adapter.
+                    String[] strings = SetlokaalPos(DDMGebouw, DDMEtage);
+                    ArrayAdapter<String> adapterLokaal = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, strings);
+                    dropdownEtage.setAdapter(adapterLokaal);
                 }
             }
 
