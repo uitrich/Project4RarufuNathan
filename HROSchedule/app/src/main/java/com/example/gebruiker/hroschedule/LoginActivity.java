@@ -153,20 +153,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 dropdownEtage.setVisibility(View.VISIBLE);
                 DDMEtage = dropdownEtage.getSelectedItem().toString();
-
-                String[] itemsLokaal = new String[]{"1", "2", "3", "4", "5"};
-
-                itemsLokaal = SetlokaalPos(DDMGebouw, DDMEtage);
-                ArrayAdapter<CharSequence> adapterLokaal = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_dropdown_item, itemsLokaal);
-                
-
-                dropdownLokaal.setAdapter(adapterLokaal);
             }
         });
         dropdownEtage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 dropdownLokaal.setVisibility(View.VISIBLE);
+
+                //hier komt de adapter.
+
+            }
+        });
+        dropdownLokaal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 DDMLokaal = dropdownLokaal.getSelectedItem().toString();
                 DDMSeqCompleted = true;
             }
