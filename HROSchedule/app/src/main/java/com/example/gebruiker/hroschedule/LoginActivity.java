@@ -148,28 +148,43 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        dropdownGebouw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        dropdownGebouw.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dropdownEtage.setVisibility(View.VISIBLE);
                 DDMEtage = dropdownEtage.getSelectedItem().toString();
             }
-        });
-        dropdownEtage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        dropdownEtage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 dropdownLokaal.setVisibility(View.VISIBLE);
 
                 //hier komt de adapter.
 
             }
-        });
-        dropdownLokaal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        dropdownLokaal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DDMLokaal = dropdownLokaal.getSelectedItem().toString();
                 DDMSeqCompleted = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                
             }
         });
         button.setOnClickListener(new OnClickListener() {
