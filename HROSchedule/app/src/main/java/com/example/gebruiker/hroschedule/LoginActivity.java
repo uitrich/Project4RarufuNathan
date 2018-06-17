@@ -184,8 +184,8 @@ public class LoginActivity extends AppCompatActivity {
                     dropdownLokaal.setVisibility(View.VISIBLE);
                     strings = SetlokaalPos(DDMGebouw, DDMEtage);
                     adapterLokaal.addAll(strings);
+                    dropdownLokaal.setAdapter(adapterLokaal);
 
-                    dropdownEtage.setAdapter(adapterLokaal);
                 }
             }
 
