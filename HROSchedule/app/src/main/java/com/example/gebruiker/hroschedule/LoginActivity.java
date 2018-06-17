@@ -147,6 +147,10 @@ public class LoginActivity extends AppCompatActivity {
                     DDMGebouw = dropdownGebouw.getSelectedItem().toString();
                     Dropdownenabled = false;
                 }
+                else if (aSwitch.isChecked()== false) {
+                    lokaalnummer.setVisibility(View.VISIBLE);
+                    dropdownGebouw.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
