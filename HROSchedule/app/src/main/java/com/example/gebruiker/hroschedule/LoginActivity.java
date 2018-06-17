@@ -183,7 +183,9 @@ public class LoginActivity extends AppCompatActivity {
                     DDMEtage = dropdownEtage.getSelectedItem().toString();
                     dropdownLokaal.setVisibility(View.VISIBLE);
                     strings = SetlokaalPos(DDMGebouw, DDMEtage);
-                    adapterLokaal.addAll(strings);
+                    for (int i=0; i>strings.length;i++){
+                        adapterLokaal.add(strings[i]);
+                    }
                     dropdownLokaal.setAdapter(adapterLokaal);
 
                 }
