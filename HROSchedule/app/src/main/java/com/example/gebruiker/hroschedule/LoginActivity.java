@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.opengl.Matrix;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -106,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //ext+
     private Boolean Dropdownenabled = false;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +119,18 @@ public class LoginActivity extends AppCompatActivity {
         final ArrayAdapter<String> adapterGebouw = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGebouw);
         dropdownGebouw.setAdapter(adapterGebouw);
 
-
+        floatingActionButton = findViewById(R.id.floatingActionButton);
         lokaalnummer = findViewById(R.id.Lokaalnummer);
         button = findViewById(R.id.button);
         textView = findViewById(R.id.tester);
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
+        dropdownGebouw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                lokaalnummer.setText("");
+            }
+        });
 
         button.setOnClickListener(new OnClickListener() {
             @Override
