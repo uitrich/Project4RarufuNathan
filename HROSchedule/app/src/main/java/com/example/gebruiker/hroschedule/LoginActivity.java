@@ -158,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 itemsLokaal = SetlokaalPos(DDMGebouw, DDMEtage);
                 ArrayAdapter<CharSequence> adapterLokaal = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_dropdown_item, itemsLokaal);
+                
 
                 dropdownLokaal.setAdapter(adapterLokaal);
             }
