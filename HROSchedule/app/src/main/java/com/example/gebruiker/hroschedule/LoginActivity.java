@@ -757,14 +757,17 @@ public class LoginActivity extends AppCompatActivity {
         if (lokaalnummer.getText().toString().toLowerCase().equals("bedrijfsbureau") || lokaalnummer.getText().toString().toLowerCase().equals("bedrijfs bureau") ) {
             Lokaalcode = "WN.00.008";
         }
-        if (lokaalnummer.getText().toString().toLowerCase().equals("kantine") || lokaalnummer.getText().toString().toLowerCase().equals("keuken") ) {
-            Lokaalcode = "H.0.110";
+        if (lokaalnummer.getText().toString().toLowerCase().equals("kantine") || lokaalnummer.getText().toString().toLowerCase().equals("studenten lounge") ) {
+            Lokaalcode = "H.0.310";
         }
         if (lokaalnummer.getText().toString().toLowerCase().equals("studentbalie") || lokaalnummer.getText().toString().toLowerCase().equals("student balie") ) {
             Lokaalcode = "H.0.305";
         }
-        if (lokaalnummer.getText().toString().toLowerCase().equals("service balie") || lokaalnummer.getText().toString().toLowerCase().equals("service balie") || lokaalnummer.getText().toString().toLowerCase().equals("servicedesk") || lokaalnummer.getText().toString().toLowerCase().equals("service desk")) {
+        if (lokaalnummer.getText().toString().toLowerCase().equals("servicebalie") || lokaalnummer.getText().toString().toLowerCase().equals("service balie") || lokaalnummer.getText().toString().toLowerCase().equals("servicedesk") || lokaalnummer.getText().toString().toLowerCase().equals("service desk")) {
             Lokaalcode = "WD.04.022";
+        }
+        if (lokaalnummer.getText().toString().toLowerCase().equals("entree") || lokaalnummer.getText().toString().toLowerCase().equals("ingang") || lokaalnummer.getText().toString().toLowerCase().equals("voordeur") || lokaalnummer.getText().toString().toLowerCase().equals("the beginning of the end")) {
+            Lokaalcode = "H.0.205";
         }
 
     }
