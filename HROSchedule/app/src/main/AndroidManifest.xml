@@ -30,9 +30,9 @@
             android:label="@string/title_activity_ralfstestspace"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".HelpPop"
+            android:label="HelpPop"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
