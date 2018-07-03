@@ -45,7 +45,6 @@ import android.view.animation.AnimationUtils;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
+
     // UI references.
     private EditText lokaalnummer;
     private TextView textView;
@@ -96,8 +96,7 @@ public class LoginActivity extends AppCompatActivity {
     private ScaleGestureDetector SGD;
     private Matrix matrix;
     private PhotoViewAttacher PVA;
-    private String settext;
-    private Context context;
+
 
 
     //agenda
@@ -105,11 +104,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button item1;
     private Button item2;
     private Button item3;
-    private Button Help;
-    private String string = "";
-    private Integer cnt = 0;
+
     //ext+
     private Boolean Dropdownenabled = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,9 +125,6 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.tester);
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
-        Help = findViewById(R.id.help);
-
-        Help();
         dropdownGebouw.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -147,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textView.setText(lokaalnummer.getText().toString());
                 if (!dropdownGebouw.getSelectedItem().toString().equals("empty") && lokaalnummer.getText().toString().isEmpty()) {
-                    Lokaalcode = dropdownGebouw.getSelectedItem().toString().toUpperCase();
+                    Lokaalcode = dropdownGebouw.getSelectedItem().toString();
                     lokaalnummer.setText("");
                 }
                 else {
@@ -164,9 +159,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //update textView met informatie over het geselecteerde lokaal
                     String Adres = getGebouw(gebouw);
-
-                    settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: " + Adres;
-
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
 
                 } else if (Lokaalcode.contains("WD")) {
@@ -180,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //update textView met informatie over het geselecteerde lokaal
                     String adres = getGebouw(gebouw);
-                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: " + adres;
+                    String settext ="Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
                 }
                 else if (Lokaalcode.contains("WN")) {
@@ -192,8 +185,7 @@ public class LoginActivity extends AppCompatActivity {
                     unlockplattegrond = true;
 
                     //update textView met informatie over het geselecteerde lokaal
-                    String adres = getGebouw(gebouw);
-                    String settext = "Etage: " + etage + " | Gebouw: " + gebouw + " | Adres: " + adres;
+                    String settext = "Etage: " + etage + " | Gebouw: " + gebouw;
                     textView.setText(settext);
                 } else {
                     unlockplattegrond = false;
@@ -769,7 +761,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void checkExtras () {
         String fug = "techlab WD.04.022 stadslab WN.00.019 bedrijfsbureau WN.00.008 kantine   studentbali servicebalie e&c H.5.113 greenhouse WN.05.006";
-        if (lokaalnummer.getText().toString().toLowerCase().equals("techlab") || lokaalnummer.getText().toString().toLowerCase().equals("tech lab") || lokaalnummer.getText().toString().toLowerCase().equals("peercoach")|| lokaalnummer.getText().toString().toLowerCase().equals("peercoaches")) {
+        if (lokaalnummer.getText().toString().toLowerCase().equals("techlab") || lokaalnummer.getText().toString().toLowerCase().equals("tech lab") ) {
             Lokaalcode = "WD.04.022";
         }
         if (lokaalnummer.getText().toString().toLowerCase().equals("stadslab") || lokaalnummer.getText().toString().toLowerCase().equals("stads lab") ) {
@@ -903,15 +895,7 @@ public class LoginActivity extends AppCompatActivity {
             return error;
         }
     }
-    public void Help(){
-        Help.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-            }
-        });
-    }
 }
 
 
