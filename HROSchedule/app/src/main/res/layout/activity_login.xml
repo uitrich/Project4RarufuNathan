@@ -40,7 +40,7 @@
             />
 
         <Spinner
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/Spinner"
             android:layout_alignParentRight="true"
@@ -59,8 +59,9 @@
             android:layout_height="365dp"
             android:layout_below="@id/tester"
             android:scaleType="matrix"
-            android:src="@drawable/h0"
-            android:visibility="invisible" />
+            android:src="@drawable/defaultpic"
+            android:visibility="visible" />
+
 
     </RelativeLayout>
 </LinearLayout>
