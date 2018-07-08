@@ -30,13 +30,21 @@
             android:id="@+id/button"
             android:text="zoek op"
         />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Lokaalnummer"
+            android:layout_alignParentRight="true"
+            android:id="@+id/help"
+            android:text="?"
+            />
 
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/Spinner"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"/>
+            />
 
         <TextView
             android:layout_width="200dp"

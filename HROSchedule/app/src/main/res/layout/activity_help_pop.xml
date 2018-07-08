@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HelpPop">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1300px"
+            android:id="@+id/Helpscreen"
+            android:layout_below="@id/TypeHelp"
+            android:src="@drawable/layouthelp1"
+            />
+
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:id="@+id/TypeHelp"
+            android:text="LayoutHelp"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Vorige"
+            android:text="Vorige"
+            android:layout_marginLeft="40dp"
+            android:layout_below="@id/Helpscreen"/>
+
+        <Button
+            android:id="@+id/Volgende"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/Helpscreen"
+            android:layout_marginRight="40dp"
+            android:text="Volgende" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

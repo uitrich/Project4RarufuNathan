@@ -122,9 +122,18 @@ public class LoginActivity extends AppCompatActivity {
 
         lokaalnummer = findViewById(R.id.Lokaalnummer);
         button = findViewById(R.id.button);
+        Button help = findViewById(R.id.help);
         textView = findViewById(R.id.tester);
         imageView = findViewById(R.id.imageView);
         PVA = new PhotoViewAttacher(imageView);
+
+        help.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(LoginActivity.this, HelpPop.class);
+                startActivity(myIntent);
+            }
+        });
         dropdownGebouw.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
